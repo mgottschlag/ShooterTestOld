@@ -44,6 +44,8 @@ class ClientPlayer : public peak::ClientEntity, public peak::InputReceiver
 		bool gotinput;
 
 		peak::Vector3F camerarotation;
+		peak::ModelSceneNode *model;
+		peak::GroupSceneNode *cameramount;
 		peak::CameraSceneNode *camera;
 
 		peak::Mutex mutex;

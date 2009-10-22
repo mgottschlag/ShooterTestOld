@@ -35,8 +35,16 @@ ClientPlayer::ClientPlayer(peak::Client *client) : ClientEntity(client),
 
 	Game *game = (Game*)getManager()->getEngine()->getGame();
 	peak::Graphics *graphics = game->getGraphics();
+	// Load player model
+	model = new peak::ModelSceneNode("drone", graphics);
+	model->setParent(graphics->getRootSceneNode());
+	// Create camera
+	cameramount = new peak::GroupSceneNode(graphics);
+	cameramount->setParent(model);
 	camera = new peak::CameraSceneNode(graphics);
-	camera->setParent(graphics->getRootSceneNode());
+	camera->setParent(cameramount);
+	camera->setTransformation(peak::Vector3F(0, 2, -10), peak::Vector3F(0, 0, 0),
+		0);
 
 	graphics->addInputReceiver(this);
 }
@@ -62,7 +70,11 @@ void ClientPlayer::update()
 		mousemovement = peak::Vector2I(0, 0);
 		gotinput = false;
 	}
-	camera->setTransformation(position.get(), camerarotation,
+	model->setTransformation(position.get(),
+		peak::Vector3F(0, camerarotation.y, 0),
+		peak::OS::get().getTime() + 40000);
+	cameramount->setTransformation(peak::Vector3F(),
+		peak::Vector3F(camerarotation.x, 0, 0),
 		peak::OS::get().getTime() + 40000);
 }
 
@@ -85,6 +97,14 @@ void ClientPlayer::onKeyDown(peak::KeyCode key)
 	{
 		currentkeys |= 0x10;
 	}
+	else if (key == peak::KEY_SPACE)
+	{
+		currentkeys |= 0x08;
+	}
+	else if (key == peak::KEY_LSHIFT)
+	{
+		currentkeys |= 0x04;
+	}
 	gotinput = true;
 }
 void ClientPlayer::onKeyUp(peak::KeyCode key)
@@ -105,6 +125,14 @@ void ClientPlayer::onKeyUp(peak::KeyCode key)
 	else if (key == peak::KEY_KEY_D)
 	{
 		currentkeys &= ~0x10;
+	}
+	else if (key == peak::KEY_SPACE)
+	{
+		currentkeys &= ~0x08;
+	}
+	else if (key == peak::KEY_LSHIFT)
+	{
+		currentkeys &= ~0x04;
 	}
 	gotinput = true;
 }

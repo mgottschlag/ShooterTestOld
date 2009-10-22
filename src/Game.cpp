@@ -32,8 +32,8 @@ bool Game::init()
 {
 	if (!graphics.init(1024, 768, false))
 		return false;
-	graphics.loadFile("media/diamond.lfm");
-	peak::ModelSceneNode *model = new peak::ModelSceneNode("Diamond",
+	graphics.loadFile("media/drone.lfm");
+	peak::ModelSceneNode *model = new peak::ModelSceneNode("drone",
 		&graphics);
 	model->setParent(graphics.getRootSceneNode());
 	model->setTransformation(peak::Vector3F(0, 0, 10), peak::Vector3F(0, 0, 0),

@@ -62,22 +62,30 @@ void ServerPlayer::update()
 		peak::Vector3F movement;
 		if (currentkeys & 0x80)
 		{
-			movement += peak::Vector3F(0, 0, 0.05);
+			movement += peak::Vector3F(0, 0, 0.1);
 		}
 		if (currentkeys & 0x40)
 		{
-			movement += peak::Vector3F(0, 0, -0.05);
+			movement += peak::Vector3F(0, 0, -0.1);
 		}
 		if (currentkeys & 0x20)
 		{
-			movement += peak::Vector3F(0.05, 0, 0);
+			movement += peak::Vector3F(0.1, 0, 0);
 		}
 		if (currentkeys & 0x10)
 		{
-			movement += peak::Vector3F(-0.05, 0, 0);
+			movement += peak::Vector3F(-0.1, 0, 0);
 		}
 		peak::Vector2F rot = rotation.get();
-		movement.rotate(peak::Vector3F(rot.y, rot.x, 0));
+		movement.rotate(peak::Vector3F(0, rot.x, 0));
+		if (currentkeys & 0x08)
+		{
+			movement += peak::Vector3F(0, 0.05, 0);
+		}
+		if (currentkeys & 0x04)
+		{
+			movement += peak::Vector3F(0, -0.05, 0);
+		}
 		pos += movement;
 		position.set(pos);
 	}
