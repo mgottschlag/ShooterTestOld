@@ -20,6 +20,12 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include <PeakEngine.hpp>
 #include <PeakGraphics.hpp>
 
+struct PlayerInput
+{
+	unsigned char keys;
+	peak::Vector2F rotation;
+};
+
 class ClientPlayer : public peak::ClientEntity, public peak::InputReceiver
 {
 	public:
@@ -30,20 +36,28 @@ class ClientPlayer : public peak::ClientEntity, public peak::InputReceiver
 
 		virtual void update();
 
+		virtual void onUpdate(unsigned int acktime);
+
 		virtual void onKeyDown(peak::KeyCode key);
 		virtual void onKeyUp(peak::KeyCode key);
 		virtual void onMouseMoved(int x, int y, int dx, int dy);
 	private:
+		void move(const PlayerInput &input);
+
 		peak::IntProperty health;
 		peak::Vector3FProperty position;
 		peak::Vector2FProperty rotation;
 		peak::IntProperty keys;
 
+		peak::InputHistory<PlayerInput> inputhistory;
+
+		PlayerInput currentinput;
+
 		unsigned char currentkeys;
 		peak::Vector2I mousemovement;
 		bool gotinput;
 
-		peak::Vector3F camerarotation;
+		peak::Vector2F camerarotation;
 		peak::ModelSceneNode *model;
 		peak::GroupSceneNode *cameramount;
 		peak::CameraSceneNode *camera;
