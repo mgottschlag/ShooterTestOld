@@ -1,0 +1,43 @@
+# PyLFM Version (0, 3, 12)
+# Lightfeather LFMG Version 3
+# AUTHOR: 
+# COPYRIGHT: 
+# DESIGNER: Blender v249
+# MODIFIED: October 22, 2009
+[geometry]
+filename=container.lfmg
+name=container
+[/geometry]
+[mesh]
+name=container
+type=EPT_TRIANGLE_LIST
+vertexbuffer=container/container_vb0
+indexbuffer=container/container_ib0
+firstindex=0
+numindexes=3108
+[/mesh]
+[material]
+name=containermat
+feature=ERPF_DIFFUSEMAP
+[colormaterial]
+ambient=127,127,127,255
+diffuse=204,204,204,255
+emissive=0,0,0,255
+specular=255,255,255,255
+shininess=0
+[/colormaterial]
+[texture]
+type=2D
+filename=container.png
+name=container.png
+[/texture]
+[renderstate]
+type=ERST_CULLING
+enabled=false
+[/renderstate]
+[/material]
+[model]
+name=container
+mesh=container
+material=containermat
+[/model]
