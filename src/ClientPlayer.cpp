@@ -17,10 +17,11 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "ClientPlayer.hpp"
 #include "Game.hpp"
 
-#include <cstdio>
+#include <iostream>
 
 ClientPlayer::ClientPlayer(peak::Client *client) : ClientEntity(client),
-	health(this), position(this), rotation(this), keys(this), currentkeys(0), gotinput(false)
+	health(this), position(this), rotation(this), keys(this), currentkeys(0),
+	gotinput(false)
 {
 	health.init(100, 8);
 	addProperty(&health);
@@ -64,17 +65,17 @@ void ClientPlayer::update()
 	{
 		peak::Buffer *msg = new peak::Buffer();
 		msg->writeUnsignedInt(currentkeys, 8);
-		msg->writeInt(mousemovement.x, 16);
-		msg->writeInt(mousemovement.y, 16);
-		sendMessage(msg, true);
+		msg->writeFloat(camerarotation.x);
+		msg->writeFloat(camerarotation.y);
+		sendMessage(msg, false);
 		mousemovement = peak::Vector2I(0, 0);
 		gotinput = false;
 	}
 	model->setTransformation(position.get(),
-		peak::Vector3F(0, camerarotation.y, 0),
+		peak::Vector3F(0, rotation.get().y, 0),
 		peak::OS::get().getTime() + 40000);
 	cameramount->setTransformation(peak::Vector3F(),
-		peak::Vector3F(camerarotation.x, 0, 0),
+		peak::Vector3F(rotation.get().x, 0, 0),
 		peak::OS::get().getTime() + 40000);
 }
 
@@ -138,6 +139,7 @@ void ClientPlayer::onKeyUp(peak::KeyCode key)
 }
 void ClientPlayer::onMouseMoved(int x, int y, int dx, int dy)
 {
+	std::cout << "Mouse movement: " << dx << "/" << dy << std::endl;
 	peak::ScopedLock lock(mutex);
 	mousemovement += peak::Vector2I(dx, dy);
 	gotinput = true;

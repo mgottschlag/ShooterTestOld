@@ -46,10 +46,10 @@ void ServerPlayer::receiveMessage(peak::Buffer *buffer)
 	std::cout << "Received message." << std::endl;
 	unsigned int currentkeys = buffer->readUnsignedInt(8);
 	keys.set(currentkeys);
-	peak::Vector2I mousemovement;
-	mousemovement.x = buffer->readInt(16);
-	mousemovement.y = buffer->readInt(16);
-	rotation.set(rotation.get() + peak::Vector2F(mousemovement.x, mousemovement.y) * 0.1);
+	peak::Vector2F mouserotation;
+	mouserotation.x = buffer->readFloat();
+	mouserotation.y = buffer->readFloat();
+	rotation.set(mouserotation);
 }
 
 void ServerPlayer::update()
@@ -77,7 +77,7 @@ void ServerPlayer::update()
 			movement += peak::Vector3F(-0.1, 0, 0);
 		}
 		peak::Vector2F rot = rotation.get();
-		movement.rotate(peak::Vector3F(0, rot.x, 0));
+		movement.rotate(peak::Vector3F(0, rot.y, 0));
 		if (currentkeys & 0x08)
 		{
 			movement += peak::Vector3F(0, 0.05, 0);
