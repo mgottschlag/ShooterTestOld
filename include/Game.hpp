@@ -30,7 +30,7 @@ class Game : public peak::Game
 		virtual bool shutdown();
 
 		virtual peak::Server *createServer(peak::BufferPointer serverdata);
-		virtual peak::Client *createClient(std::string address);
+		virtual peak::Client *createClient(std::string address, unsigned int port, unsigned int ms = 5000);
 		virtual peak::Client *createClient(peak::Server *server);
 
 		peak::Graphics *getGraphics();

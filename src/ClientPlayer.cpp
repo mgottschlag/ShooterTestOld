@@ -20,7 +20,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include <cstdio>
 
 ClientPlayer::ClientPlayer(peak::Client *client) : ClientEntity(client),
-	health(this), position(this), rotation(this), keys(this), gotinput(false)
+	health(this), position(this), rotation(this), keys(this), currentkeys(0), gotinput(false)
 {
 	health.init(100, 8);
 	addProperty(&health);

@@ -60,10 +60,10 @@ peak::Server *Game::createServer(peak::BufferPointer serverdata)
 	}
 	return server;
 }
-peak::Client *Game::createClient(std::string address)
+peak::Client *Game::createClient(std::string address, unsigned int port, unsigned int ms)
 {
 	peak::Client *client = new Client(getEngine());
-	if (!client->init(address))
+	if (!client->init(address, port, ms))
 	{
 		delete client;
 		return 0;
