@@ -68,7 +68,8 @@ void ClientPlayer::update()
 		msg->writeUnsignedInt(currentkeys, 8);
 		msg->writeFloat(camerarotation.x);
 		msg->writeFloat(camerarotation.y);
-		sendMessage(msg, false);
+		//sendMessage(msg, false);
+		sendMessage(msg, true);
 		mousemovement = peak::Vector2I(0, 0);
 		gotinput = false;
 		// Store input
@@ -93,13 +94,15 @@ void ClientPlayer::update()
 
 void ClientPlayer::onUpdate(unsigned int acktime)
 {
+	peak::ScopedLock lock(mutex);
 	// Create backup
 	createBackup();
 	// Clean input history
-	inputhistory.removeIrrelevant(acktime);
+	inputhistory.removeIrrelevant(acktime + 1);
 	// Apply input history
 	unsigned int currenttime = getManager()->getTime();
 	peak::InputHistoryFrame<PlayerInput> *input = inputhistory.get();
+	unsigned int replayedtime = 0;
 	while (input)
 	{
 		// Get time limits
@@ -108,6 +111,8 @@ void ClientPlayer::onUpdate(unsigned int acktime)
 		if (input->next)
 			endtime = input->next->time;
 		// Apply input frame
+		replayedtime += endtime - starttime;
+		std::cout << "Keys: " << (unsigned int)input->data.keys << std::endl;
 		for (unsigned int i = starttime; i < endtime; i++)
 		{
 			move(input->data);
@@ -115,6 +120,7 @@ void ClientPlayer::onUpdate(unsigned int acktime)
 		// Next frame
 		input = input->next;
 	}
+	std::cout << "Replayed " << replayedtime << " input frames." << std::endl;
 }
 
 void ClientPlayer::onKeyDown(peak::KeyCode key)
