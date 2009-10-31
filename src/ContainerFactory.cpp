@@ -14,31 +14,13 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef _SERVER_HPP_
-#define _SERVER_HPP_
+#include "ContainerFactory.hpp"
 
-#include <PeakEngine.hpp>
-#include <PeakPhysics.hpp>
-
-class Server : public peak::Server
+peak::ClientEntity *ContainerFactory::createClientEntity(peak::Client *client)
 {
-	public:
-		Server(peak::Engine *engine);
-		virtual ~Server();
-
-		virtual bool shutdown();
-		virtual bool load(peak::BufferPointer serverdata);
-
-		virtual peak::BufferPointer onNewConnection(peak::Connection *connection);
-		virtual void onConnectionAccepted(peak::Connection *connection);
-
-		virtual void update();
-
-		peak::Physics &getPhysics();
-	private:
-		peak::Physics physics;
-		peak::Plane plane;
-		peak::Body planebody;
-};
-
-#endif
+	return new ClientContainer(client);
+}
+peak::ServerEntity *ContainerFactory::createServerEntity(peak::Server *server)
+{
+	return new ServerContainer(server);
+}

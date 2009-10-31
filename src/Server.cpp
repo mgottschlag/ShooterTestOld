@@ -15,6 +15,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
 #include "Server.hpp"
+#include "ServerContainer.hpp"
 
 Server::Server(peak::Engine *engine) : peak::Server(engine)
 {
@@ -29,6 +30,12 @@ bool Server::shutdown()
 }
 bool Server::load(peak::BufferPointer serverdata)
 {
+	physics.init();
+	plane.init();
+	planebody.init(&physics, &plane);
+	// Create some entities
+	peak::Game *game = getEngine()->getGame();
+	peak::EntityFactory *factory = game->getEntityFactory("container");
 	return true;
 }
 
@@ -45,4 +52,23 @@ void Server::onConnectionAccepted(peak::Connection *connection)
 	peak::EntityFactory *factory = game->getEntityFactory("player");
 	peak::ServerEntity *player = factory->createServerEntity(this);
 	addEntity(player);
+
+	peak::EntityFactory *containerfactory = game->getEntityFactory("container");
+	for (unsigned int i = 0; i < 10; i++)
+	{
+		peak::ServerEntity *container = containerfactory->createServerEntity(this);
+		((ServerContainer*)container)->setPosition(peak::Vector3F(0, 10 + i * 4, 0));
+		addEntity(container);
+	}
+}
+
+void Server::update()
+{
+	physics.update();
+	peak::Server::update();
+}
+
+peak::Physics &Server::getPhysics()
+{
+	return physics;
 }

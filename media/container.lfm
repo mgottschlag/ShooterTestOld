@@ -33,7 +33,9 @@ name=container.png
 [/texture]
 [renderstate]
 type=ERST_CULLING
-enabled=false
+enabled=true
+frontFace=EFF_CCW
+cullFace=ECF_FRONT
 [/renderstate]
 [/material]
 [model]

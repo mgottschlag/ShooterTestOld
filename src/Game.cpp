@@ -18,11 +18,14 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "Server.hpp"
 #include "Client.hpp"
 #include "PlayerFactory.hpp"
+#include "ContainerFactory.hpp"
 
 Game::Game() : peak::Game()
 {
 	static PlayerFactory playerfactory;
 	addEntityFactory(&playerfactory, "player");
+	static ContainerFactory containerfactory;
+	addEntityFactory(&containerfactory, "container");
 }
 Game::~Game()
 {
@@ -34,15 +37,11 @@ bool Game::init()
 		return false;
 	graphics.loadFile("media/drone.lfm");
 	graphics.loadFile("media/container.lfm");
-	peak::ModelSceneNode *model = new peak::ModelSceneNode("container",
+	/*peak::ModelSceneNode *model = new peak::ModelSceneNode("container",
 		&graphics);
 	model->setParent(graphics.getRootSceneNode());
 	model->setTransformation(peak::Vector3F(0, 0, 10), peak::Vector3F(0, 0, 0),
-		peak::OS::get().getTime());
-	/*model->setTransformation(peak::Vector3F(0, 0, 50), peak::Vector3F(0, 0, 0),
-		peak::OS::get().getTime() + 1000000);
-	model->setTransformation(peak::Vector3F(0, 0, 10), peak::Vector3F(0, 0, 0),
-		peak::OS::get().getTime() + 2000000);*/
+		peak::OS::get().getTime());*/
 	return true;
 }
 bool Game::shutdown()

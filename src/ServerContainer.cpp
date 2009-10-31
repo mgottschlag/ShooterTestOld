@@ -14,31 +14,38 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#ifndef _SERVER_HPP_
-#define _SERVER_HPP_
+#include "ServerContainer.hpp"
+#include "Server.hpp"
 
-#include <PeakEngine.hpp>
-#include <PeakPhysics.hpp>
-
-class Server : public peak::Server
+ServerContainer::ServerContainer(peak::Server *server) : ServerEntity(server),
+	position(this), rotation(this)
 {
-	public:
-		Server(peak::Engine *engine);
-		virtual ~Server();
+	static peak::Vector3F startpos;
+	position.init(startpos);
+	addProperty(&position);
+	static peak::Quaternion startrot;
+	rotation.init(startrot);
+	addProperty(&rotation);
 
-		virtual bool shutdown();
-		virtual bool load(peak::BufferPointer serverdata);
+	shape.init(peak::Vector3F(2.4, 2.5, 6), 1.0f);
+	body.init(&((Server*)getManager())->getPhysics(), &shape);
+}
+ServerContainer::~ServerContainer()
+{
+}
 
-		virtual peak::BufferPointer onNewConnection(peak::Connection *connection);
-		virtual void onConnectionAccepted(peak::Connection *connection);
+std::string ServerContainer::getType()
+{
+	return "container";
+}
 
-		virtual void update();
+void ServerContainer::update()
+{
+	position.set(body.getPosition());
+	rotation.set(body.getRotation());
+}
 
-		peak::Physics &getPhysics();
-	private:
-		peak::Physics physics;
-		peak::Plane plane;
-		peak::Body planebody;
-};
-
-#endif
+void ServerContainer::setPosition(peak::Vector3F position)
+{
+	body.setPosition(position);
+}
