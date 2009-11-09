@@ -39,6 +39,8 @@ class Server : public peak::Server
 		peak::Physics physics;
 		peak::Plane plane;
 		peak::Body planebody;
+		peak::Heightfield terrain;
+		peak::Body terrainbody;
 };
 
 #endif

@@ -42,6 +42,12 @@ bool Game::init()
 	model->setParent(graphics.getRootSceneNode());
 	model->setTransformation(peak::Vector3F(0, 0, 10), peak::Vector3F(0, 0, 0),
 		peak::OS::get().getTime());*/
+	peak::TerrainSceneNode *terrain = new peak::TerrainSceneNode("terrain",
+		"media/heightmap.png", "media/terrain.jpg", "media/detailmap.png",
+		peak::Vector3F(1, 1.0f/16.0f, 1), &graphics);
+	terrain->setTransformation(peak::Vector3F(-128, 0, -128), peak::Vector3F(0, 0, 0),
+		peak::OS::get().getTime());
+	terrain->setParent(graphics.getRootSceneNode());
 	return true;
 }
 bool Game::shutdown()

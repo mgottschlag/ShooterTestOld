@@ -33,6 +33,9 @@ bool Server::load(peak::BufferPointer serverdata)
 	physics.init();
 	plane.init();
 	planebody.init(&physics, &plane);
+	terrain.init("media/heightmap.png", 0.0f, peak::Vector3F(1, 1.0f/16.0f, 1));
+	terrainbody.init(&physics, &terrain);
+	terrainbody.setPosition(peak::Vector3F(0, 8, 0));
 	// Create some entities
 	peak::Game *game = getEngine()->getGame();
 	peak::EntityFactory *factory = game->getEntityFactory("container");
