@@ -16,12 +16,14 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "ClientPlayer.hpp"
 #include "Game.hpp"
+#include "Client.hpp"
 
 #include <iostream>
 
-ClientPlayer::ClientPlayer(peak::Client *client) : ClientEntity(client),
-	health(this), position(this), rotation(this), keys(this), currentkeys(0),
-	gotinput(false)
+ClientPlayer::ClientPlayer(peak::Client *client, bool local)
+	: ClientEntity(client, local), health(this), position(this), rotation(this),
+	keys(this), pointerpos(this), clientkeys(this), clientrotation(this),
+	currentkeys(0), gotinput(false)
 {
 	health.init(100, 8);
 	addProperty(&health);
@@ -33,21 +35,45 @@ ClientPlayer::ClientPlayer(peak::Client *client) : ClientEntity(client),
 	addProperty(&rotation);
 	keys.init(0, 8);
 	addProperty(&keys);
+	pointerpos.init(startpos);
+	addProperty(&pointerpos);
+
+	if (isLocal())
+	{
+		clientkeys.init(0, 8);
+		addClientProperty(&clientkeys);
+		clientrotation.init(startrot);
+		addClientProperty(&clientrotation);
+	}
+
+	character.init(&((Client*)getManager())->getPhysics());
 
 	Game *game = (Game*)getManager()->getEngine()->getGame();
 	peak::Graphics *graphics = game->getGraphics();
-	// Load player model
-	model = new peak::ModelSceneNode("drone", graphics);
-	model->setParent(graphics->getRootSceneNode());
-	// Create camera
-	cameramount = new peak::GroupSceneNode(graphics);
-	cameramount->setParent(model);
-	camera = new peak::CameraSceneNode(graphics);
-	camera->setParent(cameramount);
-	camera->setTransformation(peak::Vector3F(0, 2, -10), peak::Vector3F(0, 0, 0),
-		0);
+	// Load camera
+	if (isLocal())
+	{
+		camera = new peak::CameraSceneNode(graphics);
+		camera->setParent(graphics->getRootSceneNode());
+		camera->setTransformation(peak::Vector3F(0, 2, -10), peak::Vector3F(0, 0, 0),
+			0);
+	}
 
-	graphics->addInputReceiver(this);
+	// Pointer (debugging)
+	pointer = new peak::ModelSceneNode("pointer", graphics);
+	pointer->setParent(graphics->getRootSceneNode());
+	if (isLocal())
+	{
+		pointer2 = new peak::ModelSceneNode("pointer", graphics);
+		pointer2->setParent(graphics->getRootSceneNode());
+	}
+
+	// Player model
+	model = new peak::ModelSceneNode("soldier", graphics);
+	model->setParent(graphics->getRootSceneNode());
+
+	if (local)
+		graphics->addInputReceiver(this);
 }
 ClientPlayer::~ClientPlayer()
 {
@@ -63,13 +89,16 @@ void ClientPlayer::update()
 	peak::ScopedLock lock(mutex);
 	if (gotinput)
 	{
-		// Send input to the server
+		/*// Send input to the server
 		peak::Buffer *msg = new peak::Buffer();
 		msg->writeUnsignedInt(currentkeys, 8);
 		msg->writeFloat(camerarotation.x);
 		msg->writeFloat(camerarotation.y);
 		//sendMessage(msg, false);
-		sendMessage(msg, true);
+		sendMessage(msg, true);*/
+		std::cout << "Setting keys to " << (int)currentkeys << std::endl;
+		clientkeys.set(currentkeys);
+		clientrotation.set(peak::Vector2F(camerarotation.x, camerarotation.y));
 		mousemovement = peak::Vector2I(0, 0);
 		gotinput = false;
 		// Store input
@@ -82,18 +111,45 @@ void ClientPlayer::update()
 		inputhistory.insert(inputframe);
 	}
 	// Move according to the current state of input
-	move(currentinput);
+	if (isLocal())
+		move(currentinput);
 	// Update model
-	model->setTransformation(position.get(),
-		peak::Vector3F(0, rotation.get().y, 0),
-		peak::OS::get().getTime() + 40000);
-	cameramount->setTransformation(peak::Vector3F(),
-		peak::Vector3F(rotation.get().x, 0, 0),
-		peak::OS::get().getTime() + 40000);
+	if (isLocal())
+	{
+		camera->setTransformation(position.get() + peak::Vector3F(0, 0.4, 0),
+			peak::Vector3F(rotation.get().x, rotation.get().y, 0),
+			peak::OS::get().getTime() + 40000);
+	}
+	else
+	{
+		model->setTransformation(position.get(),
+			peak::Vector3F(0, rotation.get().y, 0),
+			peak::OS::get().getTime() + 40000);
+	}
+
+	// Update pointer
+	pointer->setTransformation(pointerpos.get(), peak::Quaternion(), peak::OS::get().getTime() + 40000);
+	if (isLocal())
+	{
+		// Set the client pointer
+		peak::Vector2F rot = rotation.get();
+		peak::Vector3F raystart = position.get();
+		peak::Vector3F raylength(0, 0, 100);
+		raylength.rotate(peak::Vector3F(rot.x, rot.y, 0));
+		peak::Vector3F rayend = raystart + raylength;
+		peak::Physics &physics = ((Client*)getManager())->getPhysics();
+		peak::CollisionInfo collinfo;
+		if (physics.castRay(raystart, rayend, &collinfo))
+		{
+			pointer2->setTransformation(collinfo.point, peak::Quaternion(), peak::OS::get().getTime() + 40000);
+		}
+	}
 }
 
 void ClientPlayer::onUpdate(unsigned int acktime)
 {
+	if (!isLocal())
+		return;
 	peak::ScopedLock lock(mutex);
 	// Create backup
 	createBackup();
@@ -101,6 +157,8 @@ void ClientPlayer::onUpdate(unsigned int acktime)
 	inputhistory.removeIrrelevant(acktime + 1);
 	// Apply input history
 	unsigned int currenttime = getManager()->getTime();
+	/*std::cout << "Lag: approx. " << 20 * (currenttime - acktime) / 2 << " ms." << std::endl;
+	std::cout << "Times: " << currenttime << ", " << acktime << std::endl;*/
 	peak::InputHistoryFrame<PlayerInput> *input = inputhistory.get();
 	unsigned int replayedtime = 0;
 	while (input)
@@ -112,7 +170,7 @@ void ClientPlayer::onUpdate(unsigned int acktime)
 			endtime = input->next->time;
 		// Apply input frame
 		replayedtime += endtime - starttime;
-		std::cout << "Keys: " << (unsigned int)input->data.keys << std::endl;
+		//std::cout << "Keys: " << (unsigned int)input->data.keys << std::endl;
 		for (unsigned int i = starttime; i < endtime; i++)
 		{
 			move(input->data);
@@ -120,7 +178,7 @@ void ClientPlayer::onUpdate(unsigned int acktime)
 		// Next frame
 		input = input->next;
 	}
-	std::cout << "Replayed " << replayedtime << " input frames." << std::endl;
+	//std::cout << "Replayed " << replayedtime << " input frames." << std::endl;
 }
 
 void ClientPlayer::onKeyDown(peak::KeyCode key)
@@ -183,7 +241,6 @@ void ClientPlayer::onKeyUp(peak::KeyCode key)
 }
 void ClientPlayer::onMouseMoved(int x, int y, int dx, int dy)
 {
-	std::cout << "Mouse movement: " << dx << "/" << dy << std::endl;
 	peak::ScopedLock lock(mutex);
 	mousemovement += peak::Vector2I(dx, dy);
 	gotinput = true;
@@ -192,39 +249,32 @@ void ClientPlayer::onMouseMoved(int x, int y, int dx, int dy)
 void ClientPlayer::move(const PlayerInput &input)
 {
 	// Move
-	if (input.keys != 0)
+	character.getBody()->setPosition(position.get());
+	// Set speed
+	peak::Vector3F speed;
+	if (input.keys & 0x80)
 	{
-		peak::Vector3F pos = position.get();
-		peak::Vector3F movement;
-		if (input.keys & 0x80)
-		{
-			movement += peak::Vector3F(0, 0, 0.1);
-		}
-		if (input.keys & 0x40)
-		{
-			movement += peak::Vector3F(0, 0, -0.1);
-		}
-		if (input.keys & 0x20)
-		{
-			movement += peak::Vector3F(0.1, 0, 0);
-		}
-		if (input.keys & 0x10)
-		{
-			movement += peak::Vector3F(-0.1, 0, 0);
-		}
-		peak::Vector2F rot = rotation.get();
-		movement.rotate(peak::Vector3F(0, rot.y, 0));
-		if (input.keys & 0x08)
-		{
-			movement += peak::Vector3F(0, 0.05, 0);
-		}
-		if (input.keys & 0x04)
-		{
-			movement += peak::Vector3F(0, -0.05, 0);
-		}
-		pos += movement;
-		position.set(pos);
+		speed += peak::Vector3F(0, 0, 3);
 	}
+	if (input.keys & 0x40)
+	{
+		speed += peak::Vector3F(0, 0, -3);
+	}
+	if (input.keys & 0x20)
+	{
+		speed += peak::Vector3F(3, 0, 0);
+	}
+	if (input.keys & 0x10)
+	{
+		speed += peak::Vector3F(-3, 0, 0);
+	}
+	peak::Vector2F rot = rotation.get();
+	speed.rotate(peak::Vector3F(0, rot.y, 0));
+	// Update character controller
+	character.setHorizontalSpeed(speed);
+	character.update();
+	// Get the position
+	position.set(character.getBody()->getPosition());
 	// Set rotation
 	rotation.set(input.rotation);
 }

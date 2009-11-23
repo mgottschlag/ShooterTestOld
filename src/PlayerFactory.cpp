@@ -16,9 +16,10 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "PlayerFactory.hpp"
 
-peak::ClientEntity *PlayerFactory::createClientEntity(peak::Client *client)
+peak::ClientEntity *PlayerFactory::createClientEntity(peak::Client *client,
+	bool local)
 {
-	return new ClientPlayer(client);
+	return new ClientPlayer(client, local);
 }
 peak::ServerEntity *PlayerFactory::createServerEntity(peak::Server *server)
 {

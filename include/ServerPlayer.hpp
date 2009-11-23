@@ -18,6 +18,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #define _SERVERPLAYER_HPP_
 
 #include <PeakEngine.hpp>
+#include <PeakPhysics.hpp>
 
 class ServerPlayer : public peak::ServerEntity
 {
@@ -27,14 +28,24 @@ class ServerPlayer : public peak::ServerEntity
 
 		virtual std::string getType();
 
-		virtual void receiveMessage(peak::Buffer *buffer);
+		virtual void onUpdate();
 
 		virtual void update();
+
+		void setPosition(peak::Vector3F position);
 	private:
 		peak::IntProperty health;
 		peak::Vector3FProperty position;
 		peak::Vector2FProperty rotation;
 		peak::IntProperty keys;
+		peak::Vector3FProperty pointerpos;
+
+		peak::IntProperty clientkeys;
+		peak::Vector2FProperty clientrotation;
+
+		/*peak::Capsule shape;
+		peak::Body body;*/
+		peak::CharacterController character;
 };
 
 #endif

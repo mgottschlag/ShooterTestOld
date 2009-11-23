@@ -19,6 +19,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include <PeakEngine.hpp>
 #include <PeakGraphics.hpp>
+#include <PeakPhysics.hpp>
 
 struct PlayerInput
 {
@@ -29,7 +30,7 @@ struct PlayerInput
 class ClientPlayer : public peak::ClientEntity, public peak::InputReceiver
 {
 	public:
-		ClientPlayer(peak::Client *client);
+		ClientPlayer(peak::Client *client, bool local);
 		virtual ~ClientPlayer();
 
 		virtual std::string getType();
@@ -48,10 +49,14 @@ class ClientPlayer : public peak::ClientEntity, public peak::InputReceiver
 		peak::Vector3FProperty position;
 		peak::Vector2FProperty rotation;
 		peak::IntProperty keys;
+		peak::Vector3FProperty pointerpos;
 
 		peak::InputHistory<PlayerInput> inputhistory;
 
 		PlayerInput currentinput;
+
+		peak::IntProperty clientkeys;
+		peak::Vector2FProperty clientrotation;
 
 		unsigned char currentkeys;
 		peak::Vector2I mousemovement;
@@ -59,8 +64,11 @@ class ClientPlayer : public peak::ClientEntity, public peak::InputReceiver
 
 		peak::Vector2F camerarotation;
 		peak::ModelSceneNode *model;
-		peak::GroupSceneNode *cameramount;
 		peak::CameraSceneNode *camera;
+		peak::ModelSceneNode *pointer;
+		peak::ModelSceneNode *pointer2;
+
+		peak::CharacterController character;
 
 		peak::Mutex mutex;
 };

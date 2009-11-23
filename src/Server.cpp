@@ -16,6 +16,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "Server.hpp"
 #include "ServerContainer.hpp"
+#include "ServerPlayer.hpp"
 
 Server::Server(peak::Engine *engine) : peak::Server(engine)
 {
@@ -38,7 +39,13 @@ bool Server::load(peak::BufferPointer serverdata)
 	terrainbody.setPosition(peak::Vector3F(0, 8, 0));
 	// Create some entities
 	peak::Game *game = getEngine()->getGame();
-	peak::EntityFactory *factory = game->getEntityFactory("container");
+	peak::EntityFactory *containerfactory = game->getEntityFactory("container");
+	for (unsigned int i = 0; i < 10; i++)
+	{
+		peak::ServerEntity *container = containerfactory->createServerEntity(this);
+		((ServerContainer*)container)->setPosition(peak::Vector3F(0, 10 + i * 4, 0));
+		addEntity(container);
+	}
 	return true;
 }
 
@@ -48,21 +55,15 @@ peak::BufferPointer Server::onNewConnection(peak::Connection *connection)
 	serverdata->writeString("testmap");
 	return serverdata;
 }
-void Server::onConnectionAccepted(peak::Connection *connection)
+void Server::onConnectionAccepted(peak::ClientInfo &client)
 {
 	// Create player
 	peak::Game *game = getEngine()->getGame();
 	peak::EntityFactory *factory = game->getEntityFactory("player");
 	peak::ServerEntity *player = factory->createServerEntity(this);
+	player->setOwner(client.id);
+	((ServerPlayer*)player)->setPosition(peak::Vector3F(0, 10, 10));
 	addEntity(player);
-
-	peak::EntityFactory *containerfactory = game->getEntityFactory("container");
-	for (unsigned int i = 0; i < 10; i++)
-	{
-		peak::ServerEntity *container = containerfactory->createServerEntity(this);
-		((ServerContainer*)container)->setPosition(peak::Vector3F(0, 10 + i * 4, 0));
-		addEntity(container);
-	}
 }
 
 void Server::update()

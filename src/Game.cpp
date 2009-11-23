@@ -37,6 +37,8 @@ bool Game::init()
 		return false;
 	graphics.loadFile("media/drone.lfm");
 	graphics.loadFile("media/container.lfm");
+	graphics.loadFile("media/pointer.lfm");
+	graphics.loadFile("media/soldier.lfm");
 	/*peak::ModelSceneNode *model = new peak::ModelSceneNode("container",
 		&graphics);
 	model->setParent(graphics.getRootSceneNode());

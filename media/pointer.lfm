@@ -1,0 +1,43 @@
+# PyLFM Version (0, 3, 12)
+# Lightfeather LFMG Version 3
+# AUTHOR: 
+# COPYRIGHT: 
+# DESIGNER: Blender v249
+# MODIFIED: November 12, 2009
+[geometry]
+filename=pointer.lfmg
+name=pointer
+[/geometry]
+[mesh]
+name=pointer
+type=EPT_TRIANGLE_LIST
+vertexbuffer=pointer/pointer_vb0
+indexbuffer=pointer/pointer_ib0
+firstindex=0
+numindexes=18
+[/mesh]
+[material]
+name=pointer
+feature=ERPF_TRANSLUCENT
+[colormaterial]
+ambient=127,127,127,255
+diffuse=204,204,204,255
+emissive=0,0,0,255
+specular=255,255,255,255
+shininess=0
+[/colormaterial]
+[texture]
+type=2D
+filename=pointer.png
+name=pointer.png
+[/texture]
+[renderstate]
+type=ERST_CULLING
+enabled=false
+[/renderstate]
+[/material]
+[model]
+name=pointer
+mesh=pointer
+material=pointer
+[/model]

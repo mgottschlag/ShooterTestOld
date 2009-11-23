@@ -16,9 +16,10 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "ClientContainer.hpp"
 #include "Game.hpp"
+#include "Client.hpp"
 
-ClientContainer::ClientContainer(peak::Client *client) : ClientEntity(client),
-	position(this), rotation(this)
+ClientContainer::ClientContainer(peak::Client *client, bool local)
+	: ClientEntity(client, local), position(this), rotation(this)
 {
 	static peak::Vector3F startpos;
 	position.init(startpos);
@@ -26,6 +27,9 @@ ClientContainer::ClientContainer(peak::Client *client) : ClientEntity(client),
 	static peak::Quaternion startrot;
 	rotation.init(startrot);
 	addProperty(&rotation);
+
+	shape.init(peak::Vector3F(2.4, 2.5, 6), 0.0f);
+	body.init(&((Client*)getManager())->getPhysics(), &shape);
 
 	Game *game = (Game*)getManager()->getEngine()->getGame();
 	peak::Graphics *graphics = game->getGraphics();
@@ -48,6 +52,9 @@ std::string ClientContainer::getType()
 
 void ClientContainer::update()
 {
+	// Update physics shape
+	body.setPosition(position.get());
+	body.setRotation(rotation.get());
 	// Update model
 	translation->setTransformation(position.get(), rotation.get(),
 		peak::OS::get().getTime() + 40000);

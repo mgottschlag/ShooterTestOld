@@ -33,7 +33,7 @@ class ServerContainer : public peak::ServerEntity
 		void setPosition(peak::Vector3F position);
 	private:
 		peak::Vector3FProperty position;
-		peak::QuaternionProperty rotation;
+		peak::QuaternionProperty16 rotation;
 
 		peak::Box shape;
 		peak::Body body;

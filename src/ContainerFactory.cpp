@@ -16,9 +16,10 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "ContainerFactory.hpp"
 
-peak::ClientEntity *ContainerFactory::createClientEntity(peak::Client *client)
+peak::ClientEntity *ContainerFactory::createClientEntity(peak::Client *client,
+	bool local)
 {
-	return new ClientContainer(client);
+	return new ClientContainer(client, local);
 }
 peak::ServerEntity *ContainerFactory::createServerEntity(peak::Server *server)
 {

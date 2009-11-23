@@ -30,7 +30,7 @@ class Server : public peak::Server
 		virtual bool load(peak::BufferPointer serverdata);
 
 		virtual peak::BufferPointer onNewConnection(peak::Connection *connection);
-		virtual void onConnectionAccepted(peak::Connection *connection);
+		virtual void onConnectionAccepted(peak::ClientInfo &client);
 
 		virtual void update();
 

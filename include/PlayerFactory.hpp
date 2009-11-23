@@ -23,7 +23,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 class PlayerFactory : public peak::EntityFactory
 {
 	public:
-		virtual peak::ClientEntity *createClientEntity(peak::Client *client);
+		virtual peak::ClientEntity *createClientEntity(peak::Client *client,
+			bool local);
 		virtual peak::ServerEntity *createServerEntity(peak::Server *server);
 	private:
 };

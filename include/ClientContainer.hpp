@@ -19,11 +19,12 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include <PeakEngine.hpp>
 #include <PeakGraphics.hpp>
+#include <PeakPhysics.hpp>
 
 class ClientContainer : public peak::ClientEntity
 {
 	public:
-		ClientContainer(peak::Client *client);
+		ClientContainer(peak::Client *client, bool local);
 		virtual ~ClientContainer();
 
 		virtual std::string getType();
@@ -31,10 +32,13 @@ class ClientContainer : public peak::ClientEntity
 		virtual void update();
 	private:
 		peak::Vector3FProperty position;
-		peak::QuaternionProperty rotation;
+		peak::QuaternionProperty16 rotation;
 
 		peak::GroupSceneNode *translation;
 		peak::ModelSceneNode *model;
+
+		peak::Box shape;
+		peak::Body body;
 };
 
 #endif

@@ -29,5 +29,23 @@ bool Client::shutdown()
 }
 bool Client::load(peak::BufferPointer serverdata)
 {
+	// Create physics simulation (solely for collision detection)
+	physics.init();
+	plane.init();
+	planebody.init(&physics, &plane);
+	terrain.init("media/heightmap.png", 0.0f, peak::Vector3F(1, 1.0f/16.0f, 1));
+	terrainbody.init(&physics, &terrain);
+	terrainbody.setPosition(peak::Vector3F(0, 8, 0));
 	return true;
+}
+
+void Client::update()
+{
+	physics.update();
+	peak::Client::update();
+}
+
+peak::Physics &Client::getPhysics()
+{
+	return physics;
 }

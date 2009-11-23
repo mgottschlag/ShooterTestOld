@@ -15,11 +15,13 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
 #include "ServerPlayer.hpp"
+#include "Server.hpp"
 
 #include <iostream>
 
 ServerPlayer::ServerPlayer(peak::Server *server) : ServerEntity(server),
-	health(this), position(this), rotation(this), keys(this)
+	health(this), position(this), rotation(this), keys(this), pointerpos(this),
+	clientkeys(this), clientrotation(this)
 {
 	health.init(100, 8);
 	addProperty(&health);
@@ -31,6 +33,15 @@ ServerPlayer::ServerPlayer(peak::Server *server) : ServerEntity(server),
 	addProperty(&rotation);
 	keys.init(0, 8);
 	addProperty(&keys);
+	pointerpos.init(startpos);
+	addProperty(&pointerpos);
+
+	clientkeys.init(0, 8);
+	addClientProperty(&clientkeys);
+	clientrotation.init(startrot);
+	addClientProperty(&clientrotation);
+
+	character.init(&((Server*)getManager())->getPhysics());
 }
 ServerPlayer::~ServerPlayer()
 {
@@ -41,52 +52,56 @@ std::string ServerPlayer::getType()
 	return "player";
 }
 
-void ServerPlayer::receiveMessage(peak::Buffer *buffer)
+void ServerPlayer::onUpdate()
 {
-	std::cout << "Received message." << std::endl;
-	unsigned int currentkeys = buffer->readUnsignedInt(8);
-	keys.set(currentkeys);
-	peak::Vector2F mouserotation;
-	mouserotation.x = buffer->readFloat();
-	mouserotation.y = buffer->readFloat();
-	rotation.set(mouserotation);
+	std::cout << "Keys: " << clientkeys.get() << std::endl;
+	keys.set((unsigned char)clientkeys.get());
+	std::cout << "Rotation: " << clientrotation.get().x << "/" << clientrotation.get().y << std::endl;
+	rotation.set(clientrotation.get());
 }
 
 void ServerPlayer::update()
 {
-	std::cout << "Updating." << std::endl;
 	unsigned int currentkeys = keys.get();
-	if (currentkeys != 0)
+	// Set speed
+	peak::Vector3F speed;
+	if (currentkeys & 0x80)
 	{
-		peak::Vector3F pos = position.get();
-		peak::Vector3F movement;
-		if (currentkeys & 0x80)
-		{
-			movement += peak::Vector3F(0, 0, 0.1);
-		}
-		if (currentkeys & 0x40)
-		{
-			movement += peak::Vector3F(0, 0, -0.1);
-		}
-		if (currentkeys & 0x20)
-		{
-			movement += peak::Vector3F(0.1, 0, 0);
-		}
-		if (currentkeys & 0x10)
-		{
-			movement += peak::Vector3F(-0.1, 0, 0);
-		}
-		peak::Vector2F rot = rotation.get();
-		movement.rotate(peak::Vector3F(0, rot.y, 0));
-		if (currentkeys & 0x08)
-		{
-			movement += peak::Vector3F(0, 0.05, 0);
-		}
-		if (currentkeys & 0x04)
-		{
-			movement += peak::Vector3F(0, -0.05, 0);
-		}
-		pos += movement;
-		position.set(pos);
+		speed += peak::Vector3F(0, 0, 3);
 	}
+	if (currentkeys & 0x40)
+	{
+		speed += peak::Vector3F(0, 0, -3);
+	}
+	if (currentkeys & 0x20)
+	{
+		speed += peak::Vector3F(3, 0, 0);
+	}
+	if (currentkeys & 0x10)
+	{
+		speed += peak::Vector3F(-3, 0, 0);
+	}
+	peak::Vector2F rot = rotation.get();
+	speed.rotate(peak::Vector3F(0, rot.y, 0));
+	// Update character controller
+	character.setHorizontalSpeed(speed);
+	character.update();
+	// Get the position
+	position.set(character.getBody()->getPosition());
+	// Set the pointer
+	peak::Vector3F raystart = position.get();
+	peak::Vector3F raylength(0, 0, 100);
+	raylength.rotate(peak::Vector3F(rot.x, rot.y, 0));
+	peak::Vector3F rayend = raystart + raylength;
+	peak::Physics &physics = ((Server*)getManager())->getPhysics();
+	peak::CollisionInfo collinfo;
+	if (physics.castRay(raystart, rayend, &collinfo))
+	{
+		pointerpos.set(collinfo.point);
+	}
+}
+
+void ServerPlayer::setPosition(peak::Vector3F position)
+{
+	character.getBody()->setPosition(position);
 }

@@ -18,6 +18,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #define _CLIENT_HPP_
 
 #include <PeakEngine.hpp>
+#include <PeakPhysics.hpp>
 
 class Client : public peak::Client
 {
@@ -27,7 +28,16 @@ class Client : public peak::Client
 
 		virtual bool shutdown();
 		virtual bool load(peak::BufferPointer serverdata);
+
+		virtual void update();
+
+		peak::Physics &getPhysics();
 	private:
+		peak::Physics physics;
+		peak::Plane plane;
+		peak::Body planebody;
+		peak::Heightfield terrain;
+		peak::Body terrainbody;
 };
 
 #endif
