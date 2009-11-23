@@ -3,6 +3,6 @@
 /cmake_install.cmake
 /Makefile
 *.*~
-/RemoteWar
+/Shooter
 /Server
-/libRemoteWarShared.so
+/libShooterShared.so

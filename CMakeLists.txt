@@ -1,6 +1,6 @@
 
 cmake_minimum_required(VERSION 2.6)
-project(RemoteWar)
+project(Shooter)
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter")
 
@@ -24,13 +24,13 @@ src/servermain.cpp
 
 include_directories(include)
 
-add_library(RemoteWarShared SHARED ${SRC_SHARED})
-target_link_libraries(RemoteWarShared PeakEngine)
+add_library(ShooterShared SHARED ${SRC_SHARED})
+target_link_libraries(ShooterShared PeakEngine)
 
-add_executable(RemoteWar ${SRC_CLIENT})
-target_link_libraries(RemoteWar RemoteWarShared PeakGraphics PeakPhysics BulletSoftBody BulletDynamics BulletCollision LinearMath)
+add_executable(Shooter ${SRC_CLIENT})
+target_link_libraries(Shooter ShooterShared PeakGraphics PeakPhysics BulletSoftBody BulletDynamics BulletCollision LinearMath)
 
 add_executable(Server ${SRC_SERVER})
-target_link_libraries(Server RemoteWarShared PeakGraphics PeakPhysics BulletSoftBody BulletDynamics BulletCollision LinearMath)
+target_link_libraries(Server ShooterShared PeakGraphics PeakPhysics BulletSoftBody BulletDynamics BulletCollision LinearMath)
 
 set(CMAKE_BUILD_TYPE debug)
