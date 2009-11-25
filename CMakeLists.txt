@@ -10,6 +10,7 @@ src/ClientContainer.cpp
 src/ClientPlayer.cpp
 src/ContainerFactory.cpp
 src/Game.cpp
+src/MainMenu.cpp
 src/PlayerFactory.cpp
 src/Server.cpp
 src/ServerContainer.cpp

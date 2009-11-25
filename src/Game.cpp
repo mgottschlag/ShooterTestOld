@@ -19,6 +19,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "Client.hpp"
 #include "PlayerFactory.hpp"
 #include "ContainerFactory.hpp"
+#include "MainMenu.hpp"
 
 Game::Game() : peak::Game()
 {
@@ -39,6 +40,7 @@ bool Game::init()
 	graphics.loadFile("media/container.lfm");
 	graphics.loadFile("media/pointer.lfm");
 	graphics.loadFile("media/soldier.lfm");
+	graphics.loadFile("media/clearlooks.lfgt");
 	/*peak::ModelSceneNode *model = new peak::ModelSceneNode("container",
 		&graphics);
 	model->setParent(graphics.getRootSceneNode());
@@ -50,6 +52,10 @@ bool Game::init()
 	terrain->setTransformation(peak::Vector3F(-128, 0, -128), peak::Vector3F(0, 0, 0),
 		peak::OS::get().getTime());
 	terrain->setParent(graphics.getRootSceneNode());
+
+	MainMenu *menu = new MainMenu(&graphics, this);
+	peak::Menu::registerMenu(menu, "MainMenu");
+	menu->setActive(true);
 	return true;
 }
 bool Game::shutdown()

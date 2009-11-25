@@ -14,18 +14,30 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#include "Game.hpp"
+#ifndef _MAINMENU_HPP_
+#define _MAINMENU_HPP_
 
-int main(int argc, char **argv)
+#include "PeakGraphics.hpp"
+
+class Game;
+
+class MainMenu : public peak::Menu
 {
-	peak::Engine engine;
-	Game game;
-	if (!engine.loadGame(&game))
-		return -1;
-	engine.setGameDirectory("media");
-	peak::BufferPointer serverdata = new peak::Buffer();
-	serverdata->writeString("testmap");
-	if (!engine.runServer(serverdata))
-		return -1;
-	return 0;
-}
+	public:
+		MainMenu(peak::Graphics *graphics, Game *game);
+		virtual ~MainMenu();
+
+		virtual std::string getName();
+
+		virtual void onAction(peak::MenuElement *element);
+	private:
+		Game *game;
+
+		peak::MenuButton *singleplayer;
+		peak::MenuButton *createserver;
+		peak::MenuButton *joinserver;
+		peak::MenuButton *settings;
+		peak::MenuButton *exit;
+};
+
+#endif

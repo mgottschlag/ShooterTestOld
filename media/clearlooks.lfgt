@@ -1,0 +1,1841 @@
+[texture]
+  filename=vir_mouse_silver.png
+  name=vir_mouse
+[/texture]
+[texture]
+  filename=clearlooks.png
+  name=clearlooks
+[/texture]
+[font]
+  filename=Vera.ttf
+  name=vera24
+  size=24
+[/font]
+[font]
+  filename=Vera.ttf
+  name=vera16
+  size=16
+[/font]
+[font]
+  filename=Vera.ttf
+  name=vera12
+  size=12
+[/font]
+[font]
+  filename=Vera.ttf
+  name=vera11
+  size=11
+[/font]
+[font]
+  filename=Vera.ttf
+  name=vera10
+  size=10
+[/font]
+[font]
+  filename=Vera.ttf
+  name=vera9
+  size=9
+[/font]
+[theme]
+  name=clearlooks
+  [widget]
+    type=EGWT_FILE_DIALOG
+    name=filedialog
+    [homeicon]
+      texture=clearlooks
+      imageRect=0,480,32,32
+      color=255,255,255,255
+    [/homeicon]
+    [driveicon]
+      texture=clearlooks
+      imageRect=33,480,32,32
+      color=255,255,255,255
+    [/driveicon]
+    [appdiricon]
+      texture=clearlooks
+      imageRect=66,480,32,32
+      color=255,255,255,255
+    [/appdiricon]
+    [foldericon]
+      texture=clearlooks
+      imageRect=99,480,32,32
+      color=255,255,255,255
+    [/foldericon]
+    [fileicon]
+      texture=clearlooks
+      imageRect=132,480,32,32
+      color=255,255,255,255
+    [/fileicon]
+  [/widget]
+  [widget]
+    type=EGWT_MESSAGE_DIALOG
+    name=messagedialog
+    [question]
+      texture=clearlooks
+      imageRect=165,480,32,32
+      color=255,255,255,255
+    [/question]
+    [error]
+      texture=clearlooks
+      imageRect=197,480,32,32
+      color=255,255,255,255
+    [/error]
+    [warning]
+      texture=clearlooks
+      imageRect=229,480,32,32
+      color=255,255,255,255
+    [/warning]
+    [info]
+      texture=clearlooks
+      imageRect=261,480,32,32
+      color=255,255,255,255
+    [/info]
+    [cancel]
+      texture=clearlooks
+      imageRect=293,496,16,16
+      color=255,255,255,255
+    [/cancel]
+    [ok]
+      texture=clearlooks
+      imageRect=309,496,16,16
+      color=255,255,255,255
+    [/ok]
+  [/widget]
+  [widget]
+    type=EGWT_MOUSE_POINTER
+    name=mouse
+    [normal]
+      texture=vir_mouse
+      imageRect=0, 0, 15, 22
+      correctX=2
+      correctY=1
+    [/normal]
+    [move]
+      texture=vir_mouse
+      imageRect=0, 23, 30, 29
+      correctX=15
+      correctY=15
+    [/move]
+    [resizehorizontal]
+      texture=vir_mouse
+      imageRect=34, 3, 24, 15
+      correctX=14
+      correctY=14
+    [/resizehorizontal]
+    [resizevertical]
+      texture=vir_mouse
+      imageRect=17, 0, 16, 22
+      correctX=15
+      correctY=13
+    [/resizevertical]
+    [resizediatlbr]
+      texture=vir_mouse
+      imageRect=58, 1, 20, 20
+      correctX=12
+      correctY=13
+    [/resizediatlbr]
+    [resizediabltr]
+      texture=vir_mouse
+      imageRect=78, 1, 20, 20
+      correctX=12
+      correctY=13
+    [/resizediabltr]
+    [unavailable]
+      texture=vir_mouse
+      imageRect=34, 25, 22, 26
+    [/unavailable]
+    [text]
+      texture=vir_mouse
+      imageRect=115, 0, 13, 22
+      correctX=10
+      correctY=10
+    [/text]
+    [busy]
+      texture=vir_mouse
+      imageRect=64, 25, 25, 27
+    [/busy]
+    [alternateselect]
+      texture=vir_mouse
+      imageRect=96, 25, 26, 26
+    [/alternateselect]
+    [helpselect]
+      texture=vir_mouse
+      imageRect=1, 52, 24, 26
+    [/helpselect]
+    [handwriting]
+      texture=vir_mouse
+      imageRect=34, 54, 24, 27
+    [/handwriting]
+    [backgroundwork]
+      texture=vir_mouse
+      imageRect=64, 52, 30, 29
+    [/backgroundwork]
+    [precisionselect]
+      texture=vir_mouse
+      imageRect=96, 52, 30, 28
+      correctX=14
+      correctY=14
+    [/precisionselect]
+    [linkselect]
+      texture=vir_mouse
+      imageRect=100, 0, 16, 23
+    [/linkselect]
+  [/widget]
+  [widget]
+    type=EGWT_PANEL
+    name=panel
+    [borders]
+      [left]
+        texture=clearlooks
+        imageRect=194, 49, 2, 59
+        color=255,255,255,255
+      [/left]
+      [leftTop]
+        texture=clearlooks
+        imageRect=194, 47, 2, 2
+        color=255,255,255,255
+      [/leftTop]
+      [leftBottom]
+        texture=clearlooks
+        imageRect=194, 108, 2, 3
+        color=255,255,255,255
+      [/leftBottom]
+      [right]
+        texture=clearlooks
+        imageRect=263, 49, 3, 59
+        color=255,255,255,255
+      [/right]
+      [rightTop]
+        texture=clearlooks
+        imageRect=263, 47, 3, 2
+        color=255,255,255,255
+      [/rightTop]
+      [rightBottom]
+        texture=clearlooks
+        imageRect=263, 108, 3, 3
+        color=255,255,255,255
+      [/rightBottom]
+      [top]
+        texture=clearlooks
+        imageRect=196, 47, 67, 2
+        color=255,255,255,255
+      [/top]
+      [topLeft]
+        texture=clearlooks
+        imageRect=194, 47, 2, 2
+        color=255,255,255,255
+      [/topLeft]
+      [topRight]
+        texture=clearlooks
+        imageRect=263, 47, 3, 2
+        color=255,255,255,255
+      [/topRight]
+      [bottom]
+        texture=clearlooks
+        imageRect=196, 108, 67, 3
+        color=255,255,255,255
+      [/bottom]
+      [bottomLeft]
+        texture=clearlooks
+        imageRect=194, 108, 2, 3
+        color=255,255,255,255
+      [/bottomLeft]
+      [bottomRight]
+        texture=clearlooks
+        imageRect=263, 108, 3, 3
+        color=255,255,255,255
+      [/bottomRight]
+    [/borders]
+    [grip]
+      left=4
+      right=4
+      top=6
+      bottom=6
+    [/grip]
+  [/widget]
+  [widget]
+    type=EGWT_BUTTON
+    name=button
+    [normal]
+      [topLeft]
+        texture=clearlooks
+        imageRect=11, 8, 3, 3
+      [/topLeft]
+      [top]
+        texture=clearlooks
+        imageRect=14, 8, 77, 3
+      [/top]
+      [topRight]
+        texture=clearlooks
+        imageRect=91, 8, 3, 3
+      [/topRight]
+      [left]
+        texture=clearlooks
+        imageRect=11, 11, 3, 26
+      [/left]
+      [center]
+        texture=clearlooks
+        imageRect=14, 11, 77, 26
+      [/center]
+      [right]
+        texture=clearlooks
+        imageRect=91, 11, 3, 26
+      [/right]
+      [bottomLeft]
+        texture=clearlooks
+        imageRect=11, 37, 3, 3
+      [/bottomLeft]
+      [bottom]
+        texture=clearlooks
+        imageRect=14, 37, 77, 3
+      [/bottom]
+      [bottomRight]
+        texture=clearlooks
+        imageRect=91, 37, 3, 3
+      [/bottomRight]
+      texture=clearlooks
+      imageRect=11, 8, 83, 31
+      color=255,255,255, 255
+    [/normal]
+    [hovered]
+      [topLeft]
+        texture=clearlooks
+        imageRect=275, 8, 3, 3
+      [/topLeft]
+      [top]
+        texture=clearlooks
+        imageRect=278, 8, 77, 3
+      [/top]
+      [topRight]
+        texture=clearlooks
+        imageRect=355, 8, 3, 3
+      [/topRight]
+      [left]
+        texture=clearlooks
+        imageRect=275, 11, 3, 26
+      [/left]
+      [center]
+        texture=clearlooks
+        imageRect=278, 11, 77, 26
+      [/center]
+      [right]
+        texture=clearlooks
+        imageRect=355, 11, 3, 26
+      [/right]
+      [bottomLeft]
+        texture=clearlooks
+        imageRect=275, 37, 3, 3
+      [/bottomLeft]
+      [bottom]
+        texture=clearlooks
+        imageRect=278, 37, 77, 3
+      [/bottom]
+      [bottomRight]
+        texture=clearlooks
+        imageRect=355, 37, 3, 3
+      [/bottomRight]
+      texture=clearlooks
+      imageRect=275, 8, 83, 31
+      color=255,255,255, 255
+    [/hovered]
+    [pressed]
+      [topLeft]
+        texture=clearlooks
+        imageRect=187, 8, 3, 3
+      [/topLeft]
+      [top]
+        texture=clearlooks
+        imageRect=190, 8, 77, 3
+      [/top]
+      [topRight]
+        texture=clearlooks
+        imageRect=267, 8, 3, 3
+      [/topRight]
+      [left]
+        texture=clearlooks
+        imageRect=187, 11, 3, 26
+      [/left]
+      [center]
+        texture=clearlooks
+        imageRect=190, 11, 77, 26
+      [/center]
+      [right]
+        texture=clearlooks
+        imageRect=267, 11, 3, 26
+      [/right]
+      [bottomLeft]
+        texture=clearlooks
+        imageRect=187, 37, 3, 3
+      [/bottomLeft]
+      [bottom]
+        texture=clearlooks
+        imageRect=190, 37, 77, 3
+      [/bottom]
+      [bottomRight]
+        texture=clearlooks
+        imageRect=267, 37, 3, 3
+      [/bottomRight]
+      texture=clearlooks
+      imageRect=187, 8, 83, 31
+      color=255,255,255, 255
+    [/pressed]
+    [disabled]
+      [topLeft]
+        texture=clearlooks
+        imageRect=99, 8, 3, 3
+      [/topLeft]
+      [top]
+        texture=clearlooks
+        imageRect=102, 8, 77, 3
+      [/top]
+      [topRight]
+        texture=clearlooks
+        imageRect=179, 8, 3, 3
+      [/topRight]
+      [left]
+        texture=clearlooks
+        imageRect=99, 11, 3, 26
+      [/left]
+      [center]
+        texture=clearlooks
+        imageRect=102, 11, 77, 26
+      [/center]
+      [right]
+        texture=clearlooks
+        imageRect=179, 11, 3, 26
+      [/right]
+      [bottomLeft]
+        texture=clearlooks
+        imageRect=99, 37, 3, 3
+      [/bottomLeft]
+      [bottom]
+        texture=clearlooks
+        imageRect=102, 37, 77, 3
+      [/bottom]
+      [bottomRight]
+        texture=clearlooks
+        imageRect=179, 37, 3, 3
+      [/bottomRight]
+      texture=clearlooks
+      imageRect=99, 8, 83, 31
+      color=255,255,255, 255
+    [/disabled]
+    [focus]
+      [topLeft]
+        texture=clearlooks
+        imageRect=275, 8, 3, 3
+      [/topLeft]
+      [top]
+        texture=clearlooks
+        imageRect=278, 8, 77, 3
+      [/top]
+      [topRight]
+        texture=clearlooks
+        imageRect=355, 8, 3, 3
+      [/topRight]
+      [left]
+        texture=clearlooks
+        imageRect=275, 11, 3, 26
+      [/left]
+      [center]
+        texture=clearlooks
+        imageRect=278, 11, 77, 26
+      [/center]
+      [right]
+        texture=clearlooks
+        imageRect=355, 11, 3, 26
+      [/right]
+      [bottomLeft]
+        texture=clearlooks
+        imageRect=275, 37, 3, 3
+      [/bottomLeft]
+      [bottom]
+        texture=clearlooks
+        imageRect=278, 37, 77, 3
+      [/bottom]
+      [bottomRight]
+        texture=clearlooks
+        imageRect=355, 37, 3, 3
+      [/bottomRight]
+      texture=clearlooks
+      imageRect=275, 8, 83, 31
+      color=255,255,255, 255
+    [/focus]
+    font=vera12
+    [fontcolor]
+      color=0,0,0, 255
+      hoveredcolor=0,0,0, 255
+      pressedcolor=0,0,0, 255
+      disabledcolor=191,191,191, 255
+      focuscolor=0,0,0, 255
+    [/fontcolor]
+    [insets]
+      top=5
+      left=4
+      bottom=5
+      right=4
+    [/insets]
+  [/widget]
+  [widget]
+    type=EGWT_CHECKBOX
+    name=checkbox
+    [normal]
+      texture=clearlooks
+      imageRect=421, 52, 12, 12
+      color=255,255,255,255
+    [/normal]
+    [checked]
+      texture=clearlooks
+      imageRect=405, 52, 12, 12
+      color=255,255,255,255
+    [/checked]
+    [disabled]
+      texture=clearlooks
+      imageRect=437, 52, 12, 12
+      color=255,255,255,255
+    [/disabled]
+    [disabledchecked]
+      texture=clearlooks
+      imageRect=453, 52, 12, 12
+      color=255,255,255,255
+    [/disabledchecked]
+    font=vera11
+    [fontcolor]
+      color=0,0,0,255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+      focuscolor=0,0,0,255
+    [/fontcolor]
+    labeloffsetx=15
+    labeloffsety=0
+  [/widget]
+  [widget]
+    type=EGWT_CONTEXT_MENU
+    name=contextmenu
+    font=vera12
+    [fontcolor]
+      color=0,0,0,255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+      focuscolor=0,0,0,255
+    [/fontcolor]
+    [background]
+      texture=clearlooks
+      imageRect=196, 49, 67, 59
+    [/background]
+    [highlight]
+      colorTopLeft=255,255,255,255
+      colorTopRight=255,255,255,255
+      colorBottomLeft=255,255,255,255
+      colorBottomRight=255,255,255,255
+    [/highlight]
+    focusLabelColor=255,255,255,255
+    [borders]
+      left=2
+      right=2
+      top=1
+      bottom=1
+    [/borders]
+    height=24
+    headerheight=24
+    cliphighlightoborders=0
+  [/widget]
+  [widget]
+    type=EGWT_MENU_ITEM
+    name=menuitem
+    [normal]
+      texture=clearlooks
+      imageRect=196, 49, 68, 59
+      color=255,255,255,255
+    [/normal]
+    [hovered]
+      texture=clearlooks
+      imageRect=196, 116, 67, 11
+      color=255,255,255,255
+    [/hovered]
+    [pressed]
+      texture=clearlooks
+      imageRect=196, 49, 67, 59
+      color=255,255,255,255
+    [/pressed]
+    [disabled]
+      texture=clearlooks
+      imageRect=196, 49, 67, 59
+      color=196,196,196,255
+    [/disabled]
+    [focus]
+      texture=clearlooks
+      imageRect=196, 116, 67, 10
+      color=255,255,255,255
+    [/focus]
+    font=vera10
+    [fontcolor]
+      color=0,0,0,255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+      focuscolor=0,0,0,255
+    [/fontcolor]
+    [insets]
+      top=2
+      left=2
+      bottom=2
+      right=2
+    [/insets]
+  [/widget]
+  [widget]
+    type=EGWT_MENU_BAR
+    name=menubar
+    font=vera12
+    [fontcolor]
+      color=0,0,255,255
+      hoveredcolor=128,128,128,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+      focuscolor=0,0,0,255
+    [/fontcolor]
+    [background]
+      texture=clearlooks
+      imageRect=194, 48, 71, 62
+    [/background]
+    [highlight]
+      colorTopLeft=255,255,255,255
+      colorTopRight=255,255,255,255
+      colorBottomLeft=255,255,255,255
+      colorBottomRight=255,255,255,255
+    [/highlight]
+    focusLabelColor=255,255,255,255
+    [borders]
+      left=0
+      right=0
+      top=0
+      bottom=0
+    [/borders]
+    clipHighlighToBorders=0
+    height=26
+  [/widget]
+  [widget]
+    type=EGWT_PROGRESS_BAR
+    name=progressbar
+    [normal]
+      texture=clearlooks
+      imageRect=338, 103, 128, 15
+      color=255,255,255,255
+    [/normal]
+    [done]
+      texture=clearlooks
+      imageRect=338, 119, 128, 15
+      color=255,255,255,255
+    [/done]
+    font=vera11
+    [fontcolor]
+      color=255,255,255, 255
+      hoveredcolor=255,255,255, 255
+      pressedcolor=255,255,255, 255
+      disabledcolor=192,192,192,255
+      focuscolor=255,255,255, 255
+    [/fontcolor]
+  [/widget]
+  [widget]
+    type=EGWT_WINDOW
+    name=window
+    [borders]
+      [left]
+        texture=clearlooks
+        imageRect=10, 143, 3, 127
+        color=255,255,255,255
+      [/left]
+      [leftTop]
+        texture=clearlooks
+        imageRect=10, 140, 3, 3
+        color=255,255,255,255
+      [/leftTop]
+      [leftBottom]
+        texture=clearlooks
+        imageRect=10, 270, 3, 4
+        color=255,255,255,255
+      [/leftBottom]
+      [right]
+        texture=clearlooks
+        imageRect=183, 143, 4, 127
+        color=255,255,255,255
+      [/right]
+      [rightTop]
+        texture=clearlooks
+        imageRect=183, 140, 4, 3
+        color=255,255,255,255
+      [/rightTop]
+      [rightBottom]
+        texture=clearlooks
+        imageRect=183, 270, 4, 4
+        color=255,255,255,255
+      [/rightBottom]
+      [bottom]
+        texture=clearlooks
+        imageRect=13, 270, 170, 4
+        color=255,255,255,255
+      [/bottom]
+      [bottomLeft]
+        texture=clearlooks
+        imageRect=10, 270, 3, 4
+        color=255,255,255,255
+      [/bottomLeft]
+      [bottomRight]
+        texture=clearlooks
+        imageRect=183, 270, 4, 4
+        color=255,255,255,255
+      [/bottomRight]
+      [bottomInactive]
+        texture=clearlooks
+        imageRect=22, -17, 255, 6
+        color=255,255,255,255
+      [/bottomInactive]
+      [bottomLeftInactive]
+        texture=clearlooks
+        imageRect=6, -17, 16, 6
+        color=255,255,255,255
+      [/bottomLeftInactive]
+      [bottomRightInactive]
+        texture=clearlooks
+        imageRect=277, -17, 16, 6
+        color=255,255,255,255
+      [/bottomRightInactive]
+    [/borders]
+    [titlebar]
+      [top]
+        texture=clearlooks
+        imageRect=15, 119, 166, 22
+        color=255,255,255,255
+      [/top]
+      [topLeft]
+        texture=clearlooks
+        imageRect=10, 119, 5, 22
+        color=255,255,255,255
+      [/topLeft]
+      [topRight]
+        texture=clearlooks
+        imageRect=181, 119, 6, 22
+        color=255,255,255,255
+      [/topRight]
+      [topInactive]
+        texture=clearlooks
+        imageRect=15, 274, 166, 22
+        color=255,255,255,255
+      [/topInactive]
+      [topLeftInactive]
+        texture=clearlooks
+        imageRect=10, 274, 5, 22
+        color=255,255,255,255
+      [/topLeftInactive]
+      [topRightInactive]
+        texture=clearlooks
+        imageRect=181, 274, 6, 22
+        color=255,255,255,255
+      [/topRightInactive]
+    [/titlebar]
+    [title]
+      [top]
+        texture=clearlooks
+        imageRect=15, 119, 166, 22
+        color=255,255,255,255
+      [/top]
+      [topLeft]
+        texture=clearlooks
+        imageRect=10, 119, 5, 22
+        color=255,255,255,255
+      [/topLeft]
+      [topRight]
+        texture=clearlooks
+        imageRect=164, 119, 14, 22
+        color=255,255,255,255
+      [/topRight]
+      [topInactive]
+        texture=clearlooks
+        imageRect=15, 274, 166, 22
+        color=255,255,255,255
+      [/topInactive]
+      [topLeftInactive]
+        texture=clearlooks
+        imageRect=10, 274, 5, 22
+        color=255,255,255,255
+      [/topLeftInactive]
+      [topRightInactive]
+        texture=clearlooks
+        imageRect=174, 274, 7, 22
+        color=255,255,255,255
+      [/topRightInactive]
+      font=vera12
+      [fontcolor]
+        color=255,255,255,255
+        hoveredcolor=0,0,0,255
+        pressedcolor=0,0,0,255
+        disabledcolor=192,192,192,255
+        focuscolor=0,0,0,255
+      [/fontcolor]
+    [/title]
+    [closeButton]
+      [normal]
+        texture=clearlooks
+        imageRect=269, 46, 16, 16
+        color=255,255,255,255
+      [/normal]
+      [hovered]
+        texture=clearlooks
+        imageRect=285, 46, 16, 16
+        color=255,255,255,255
+      [/hovered]
+      [pressed]
+        texture=clearlooks
+        imageRect=317, 46, 16, 16
+        color=255,255,255,255
+      [/pressed]
+      [disabled]
+        texture=clearlooks
+        imageRect=301, 46, 16, 16
+        color=255,255,255,255
+      [/disabled]
+      [focus]
+        texture=clearlooks
+        imageRect=269, 46, 16, 16
+        color=255,255,255,255
+      [/focus]
+      font=vera12
+      [fontcolor]
+        color=255,255,255,255
+        hoveredcolor=0,0,0,255
+        pressedcolor=0,0,0,255
+        disabledcolor=192,192,192,255
+        focuscolor=0,0,0,255
+      [/fontcolor]
+    [/closeButton]
+    [rollButton]
+      [normal]
+        texture=clearlooks
+        imageRect=269, 62, 16, 16
+        color=255,255,255,255
+      [/normal]
+      [hovered]
+        texture=clearlooks
+        imageRect=285, 62, 16, 16
+        color=255,255,255,255
+      [/hovered]
+      [pressed]
+        texture=clearlooks
+        imageRect=317, 62, 16, 16
+        color=255,255,255,255
+      [/pressed]
+      [disabled]
+        texture=clearlooks
+        imageRect=301, 62, 16, 16
+        color=255,255,255,255
+      [/disabled]
+      [focus]
+        texture=clearlooks
+        imageRect=269, 62, 16, 16
+        color=255,255,255,255
+      [/focus]
+      font=vera12
+      [fontcolor]
+        color=255,255,255,255
+        hoveredcolor=0,0,0,255
+        pressedcolor=0,0,0,255
+        disabledcolor=192,192,192,255
+        focuscolor=0,0,0,255
+      [/fontcolor]
+    [/rollButton]
+    [grip]
+      left=4
+      right=4
+      top=6
+      bottom=6
+    [/grip]
+    titlebarheight=21
+    titleoffsetx=0
+    titleoffsety=0
+    closebuttonoffsetx=24
+    closebuttonoffsety=3
+    closebuttonwidth=15
+    closebuttonheight=15
+    rollbuttonoffsetx=40
+    rollbuttonoffsety=3
+    rollbuttonwidth=15
+    rollbuttonheight=15
+  [/widget]
+  [widget]
+    type=EGWT_EDIT_BOX
+    name=editbox
+    font=vera12
+    [fontcolor]
+      color=0,0,0,255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+      focuscolor=0,0,0,255
+    [/fontcolor]
+    [left]
+      texture=clearlooks
+      imageRect=11, 48, 9, 23
+      color=255,255,255,255
+    [/left]
+    [right]
+      texture=clearlooks
+      imageRect=88, 48, 9, 23
+      color=255,255,255,255
+    [/right]
+    [middle]
+      texture=clearlooks
+      imageRect=19, 48, 69, 23
+      color=255,255,255,255
+    [/middle]
+    [field]
+      color=255,255,255,255
+    [/field]
+    [fieldDisabled]
+      color=100,100,100,255
+    [/fieldDisabled]
+    [textCursor]
+      texture=clearlooks
+      imageRect=144, 120, 1, 19
+      color=255,255,255,255
+    [/textCursor]
+    [highlight]
+      color=153,153,220, 255
+    [/highlight]
+    [textHighlightColor]
+      color=255,0,255,255
+    [/textHighlightColor]
+    [borders]
+      top=3
+      left=7
+      bottom=3
+      right=7
+    [/borders]
+    cursorwidth=1
+  [/widget]
+  [widget]
+    type=EGWT_LABEL
+    name=label
+    font=vera12
+    [fontcolor]
+      color=0,0,0, 255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=0,0,0,255
+      focuscolor=0,0,0,255
+    [/fontcolor]
+  [/widget]
+  [widget]
+    type=EGWT_BASIC_CONTENT_PANE
+    name=basiccontentpane
+    [pane]
+      texture=clearlooks
+      imageRect=13, 143, 170, 127
+      colorTopLeft=255,255,255,255
+      colorTopRight=255,255,255,255
+      colorBottomLeft=255,255,255,255
+      colorBottomRight=255,255,255,255
+    [/pane]
+  [/widget]
+  [widget]
+    type=EGWT_SLIDER_VERTICAL
+    name=scrollbarvertical
+    [buttontop]
+      [normal]
+        texture=clearlooks
+        imageRect=474, 7, 15, 15
+        color=255,255,255,255
+      [/normal]
+      [hovered]
+        texture=clearlooks
+        imageRect=474, 7, 15, 15
+        color=255,255,255,255
+      [/hovered]
+      [pressed]
+        texture=clearlooks
+        imageRect=474, 7, 15, 15
+        color=255,255,255,255
+      [/pressed]
+      [disabled]
+        texture=clearlooks
+        imageRect=490, 7, 15, 15
+        color=255,255,255,255
+      [/disabled]
+    [/buttontop]
+    [buttonbottom]
+      [normal]
+        texture=clearlooks
+        imageRect=490, 120, 15, 15
+        color=255,255,255,255
+      [/normal]
+      [hovered]
+        texture=clearlooks
+        imageRect=490, 120, 15, 15
+        color=255,255,255,255
+      [/hovered]
+      [pressed]
+        texture=clearlooks
+        imageRect=490, 120, 15, 15
+        color=255,255,255,255
+      [/pressed]
+      [disabled]
+        texture=clearlooks
+        imageRect=474, 120, 15, 15
+        color=255,255,255,255
+      [/disabled]
+    [/buttonbottom]
+    [thumb]
+      [normal]
+        texture=clearlooks
+        imageRect=490, 21, 15, 31
+        color=255,255,255,255
+      [/normal]
+      [hovered]
+        texture=clearlooks
+        imageRect=490, 21, 15, 31
+        color=255,255,255,255
+      [/hovered]
+      [pressed]
+        texture=clearlooks
+        imageRect=490, 21, 15, 31
+        color=255,255,255,255
+      [/pressed]
+      [disabled]
+        texture=clearlooks
+        imageRect=490, 21, 15, 31
+        color=255,255,255,255
+      [/disabled]
+    [/thumb]
+    [grip]
+      [normal]
+        texture=clearlooks
+        imageRect=490, 30, 15, 11
+        color=255,255,255,255
+      [/normal]
+      [hovered]
+        texture=clearlooks
+        imageRect=490, 30, 15, 11
+        color=255,255,255,255
+      [/hovered]
+      [pressed]
+        texture=clearlooks
+        imageRect=490, 30, 15, 11
+        color=255,255,255,255
+      [/pressed]
+      [disabled]
+        texture=clearlooks
+        imageRect=490, 30, 15, 11
+        color=255,255,255,255
+      [/disabled]
+    [/grip]
+    [background]
+      [top]
+        texture=clearlooks
+        imageRect=474, 22, 15, 4
+        color=255,255,255,255
+      [/top]
+      [bottom]
+        texture=clearlooks
+        imageRect=490, 116, 15, 4
+        color=255,255,255,255
+      [/bottom]
+      [middle]
+        texture=clearlooks
+        imageRect=474, 28, 15, 57
+        color=255,255,255,255
+      [/middle]
+    [/background]
+  [/widget]
+  [widget]
+    type=EGWT_SLIDER_HORIZONTAL
+    name=scrollbarhorizontal
+    [buttonleft]
+      [normal]
+        texture=clearlooks
+        imageRect=338, 87, 15, 15
+        color=255,255,255,255
+      [/normal]
+      [hovered]
+        texture=clearlooks
+        imageRect=338, 87, 15, 15
+        color=255,255,255,255
+      [/hovered]
+      [pressed]
+        texture=clearlooks
+        imageRect=338, 87, 15, 15
+        color=255,255,255,255
+      [/pressed]
+      [disabled]
+        texture=clearlooks
+        imageRect=338, 71, 15, 15
+        color=255,255,255,255
+      [/disabled]
+    [/buttonleft]
+    [buttonright]
+      [normal]
+        texture=clearlooks
+        imageRect=451, 71, 15, 15
+        color=255,255,255,255
+      [/normal]
+      [hovered]
+        texture=clearlooks
+        imageRect=451, 71, 15, 15
+        color=255,255,255,255
+      [/hovered]
+      [pressed]
+        texture=clearlooks
+        imageRect=451, 71, 15, 15
+        color=255,255,255,255
+      [/pressed]
+      [disabled]
+        texture=clearlooks
+        imageRect=451, 87, 15, 15
+        color=255,255,255,255
+      [/disabled]
+    [/buttonright]
+    [thumb]
+      [normal]
+        texture=clearlooks
+        imageRect=352, 71, 31, 15
+        color=255,255,255,255
+      [/normal]
+      [hovered]
+        texture=clearlooks
+        imageRect=352, 71, 31, 15
+        color=255,255,255,255
+      [/hovered]
+      [pressed]
+        texture=clearlooks
+        imageRect=352, 71, 31, 15
+        color=255,255,255,255
+      [/pressed]
+      [disabled]
+        texture=clearlooks
+        imageRect=352, 71, 31, 15
+        color=255,255,255,255
+      [/disabled]
+    [/thumb]
+    [grip]
+      [normal]
+        texture=clearlooks
+        imageRect=361, 71, 11, 15
+        color=255,255,255,255
+      [/normal]
+      [hovered]
+        texture=clearlooks
+        imageRect=361, 71, 11, 15
+        color=255,255,255,255
+      [/hovered]
+      [pressed]
+        texture=clearlooks
+        imageRect=361, 71, 11, 15
+        color=255,255,255,255
+      [/pressed]
+      [disabled]
+        texture=clearlooks
+        imageRect=361, 71, 11, 15
+        color=255,255,255,255
+      [/disabled]
+    [/grip]
+    [background]
+      [left]
+        texture=clearlooks
+        imageRect=353, 87, 6, 15
+        color=255,255,255,255
+      [/left]
+      [right]
+        texture=clearlooks
+        imageRect=442, 71, 9, 15
+        color=255,255,255,255
+      [/right]
+      [middle]
+        texture=clearlooks
+        imageRect=385, 71, 62, 15
+        color=255,255,255,255
+      [/middle]
+    [/background]
+  [/widget]
+  [widget]
+    type=EGWT_RADIOBUTTON
+    name=radiobutton
+    [normal]
+      texture=clearlooks
+      imageRect=421, 36, 12, 12
+      color=255,255,255,255
+    [/normal]
+    [checked]
+      texture=clearlooks
+      imageRect=405, 36, 12, 12
+      color=255,255,255,255
+    [/checked]
+    [disabled]
+      texture=clearlooks
+      imageRect=437, 36, 12, 12
+      color=255,255,255,255
+    [/disabled]
+    [disabledchecked]
+      texture=clearlooks
+      imageRect=453, 36, 12, 12
+      color=255,255,255,255
+    [/disabledchecked]
+    font=vera11
+    [fontcolor]
+      color=0,0,0,255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+      focuscolor=0,0,0,255
+    [/fontcolor]
+    labeloffsetx=16
+    labeloffsety=0
+  [/widget]
+  [widget]
+    type=EGWT_LISTBOX
+    name=listbox
+    [top]
+      texture=clearlooks
+      imageRect=13, 48, 82, 4
+      color=255,255,255,255
+    [/top]
+    [topleft]
+      texture=clearlooks
+      imageRect=11, 48, 2, 4
+      color=255,255,255,255
+    [/topleft]
+    [topright]
+      texture=clearlooks
+      imageRect=95, 48, 2, 4
+      color=255,255,255,255
+    [/topright]
+    [left]
+      texture=clearlooks
+      imageRect=11, 52, 2, 14
+      color=255,255,255,255
+    [/left]
+    [right]
+      texture=clearlooks
+      imageRect=95, 52, 2, 14
+      color=255,255,255,255
+    [/right]
+    [normal]
+      texture=clearlooks
+      imageRect=13, 52, 82, 14
+      color=255,255,255,255
+    [/normal]
+    [hovered]
+      texture=clearlooks
+      imageRect=196, 55, 68, 10
+      color=255,255,255,255
+    [/hovered]
+    [selected]
+      texture=clearlooks
+      imageRect=12, 126, 173, 11
+      color=255,255,255,255
+    [/selected]
+    [disabled]
+      texture=clearlooks
+      imageRect=101, 53, 82, 13
+      color=255,255,255,255
+    [/disabled]
+    [bottom]
+      texture=clearlooks
+      imageRect=13, 67, 82, 4
+      color=255,255,255,255
+    [/bottom]
+    [bottomleft]
+      texture=clearlooks
+      imageRect=11, 66, 2, 4
+      color=255,255,255,255
+    [/bottomleft]
+    [bottomright]
+      texture=clearlooks
+      imageRect=95, 66, 2, 4
+      color=255,255,255,255
+    [/bottomright]
+    font=vera12
+    [fontcolor]
+      color=0,0,0,255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+    [/fontcolor]
+    labeloffsetleft=3
+    labeloffsetright=3
+    minwidth=30
+  [/widget]
+  [widget]
+    type=EGWT_GRID
+    name=grid
+    [top]
+      texture=clearlooks
+      imageRect=103, 48, 77, 4
+      color=255,255,255,255
+    [/top]
+    [topleft]
+      texture=clearlooks
+      imageRect=99, 48, 4, 4
+      color=255,255,255,255
+    [/topleft]
+    [topright]
+      texture=clearlooks
+      imageRect=181, 48, 4, 4
+      color=255,255,255,255
+    [/topright]
+    [left]
+      texture=clearlooks
+      imageRect=99, 52, 4, 14
+      color=255,255,255,255
+    [/left]
+    [right]
+      texture=clearlooks
+      imageRect=181, 52, 4, 14
+      color=255,255,255,255
+    [/right]
+    [normal]
+      texture=clearlooks
+      imageRect=13, 52, 82, 14
+      color=255,255,255,255
+    [/normal]
+    [hovered]
+      texture=clearlooks
+      imageRect=196, 55, 68, 10
+      color=255,255,255,255
+    [/hovered]
+    [selected]
+      texture=clearlooks
+      imageRect=12, 126, 173, 11
+      color=255,255,255,255
+    [/selected]
+    [disabled]
+      texture=clearlooks
+      imageRect=101, 53, 82, 13
+      color=255,255,255,255
+    [/disabled]
+    [bottom]
+      texture=clearlooks
+      imageRect=103, 67, 77, 4
+      color=255,255,255,255
+    [/bottom]
+    [bottomleft]
+      texture=clearlooks
+      imageRect=99, 67, 4, 4
+      color=255,255,255,255
+    [/bottomleft]
+    [bottomright]
+      texture=clearlooks
+      imageRect=181, 67, 4, 4
+      color=255,255,255,255
+    [/bottomright]
+    [background]
+      texture=clearlooks
+      imageRect=101, 53, 82, 13
+      color=255,255,255,255
+    [/background]
+    [grid]
+      texture=clearlooks
+      imageRect=101, 53, 82, 13
+      color=255,255,255,255
+    [/grid]
+    font=vera12
+    [fontcolor]
+      color=0,0,0,255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+    [/fontcolor]
+  [/widget]
+  [widget]
+    type=EGWT_PROPERTY_GRID
+    name=propgrid
+    [top]
+      texture=clearlooks
+      imageRect=103, 48, 77, 4
+      color=255,255,255,255
+    [/top]
+    [topleft]
+      texture=clearlooks
+      imageRect=99, 48, 4, 4
+      color=255,255,255,255
+    [/topleft]
+    [topright]
+      texture=clearlooks
+      imageRect=181, 48, 4, 4
+      color=255,255,255,255
+    [/topright]
+    [left]
+      texture=clearlooks
+      imageRect=99, 52, 4, 14
+      color=255,255,255,255
+    [/left]
+    [right]
+      texture=clearlooks
+      imageRect=181, 52, 4, 14
+      color=255,255,255,255
+    [/right]
+    [normal]
+      texture=clearlooks
+      imageRect=13, 52, 82, 14
+      color=255,255,255,255
+    [/normal]
+    [hovered]
+      texture=clearlooks
+      imageRect=196, 55, 68, 10
+      color=255,255,255,255
+    [/hovered]
+    [selected]
+      texture=clearlooks
+      imageRect=12, 126, 173, 11
+      color=255,255,255,255
+    [/selected]
+    [disabled]
+      texture=clearlooks
+      imageRect=101, 53, 82, 13
+      color=255,255,255,255
+    [/disabled]
+    [bottom]
+      texture=clearlooks
+      imageRect=103, 67, 77, 4
+      color=255,255,255,255
+    [/bottom]
+    [bottomleft]
+      texture=clearlooks
+      imageRect=99, 67, 4, 4
+      color=255,255,255,255
+    [/bottomleft]
+    [bottomright]
+      texture=clearlooks
+      imageRect=181, 67, 4, 4
+      color=255,255,255,255
+    [/bottomright]
+    [background]
+      texture=clearlooks
+      imageRect=101, 53, 82, 13
+      color=255,255,255,255
+    [/background]
+    [grid]
+      texture=clearlooks
+      imageRect=101, 53, 82, 13
+      color=255,255,255,255
+    [/grid]
+    [collapse]
+      texture=clearlooks
+      imageRect=373, 52, 12, 12
+      color=255,255,255,255
+    [/collapse]
+    [expand]
+      texture=clearlooks
+      imageRect=389, 52, 12, 12
+      color=255,255,255,255
+    [/expand]
+    font=vera12
+    [fontcolor]
+      color=0,0,0,255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+    [/fontcolor]
+    groupfont=vera12
+    [groupfontcolor]
+      color=72,86,114,255
+      hoveredcolor=72,86,114,255
+      pressedcolor=72,86,114,255
+      disabledcolor=192,192,192,255
+    [/groupfontcolor]
+  [/widget]
+  [widget]
+    type=EGWT_TREE_VIEW
+    name=treeview
+    [top]
+      texture=clearlooks
+      imageRect=103, 48, 77, 4
+      color=255,255,255,255
+    [/top]
+    [topleft]
+      texture=clearlooks
+      imageRect=99, 48, 4, 4
+      color=255,255,255,255
+    [/topleft]
+    [topright]
+      texture=clearlooks
+      imageRect=181, 48, 4, 4
+      color=255,255,255,255
+    [/topright]
+    [left]
+      texture=clearlooks
+      imageRect=99, 52, 4, 14
+      color=255,255,255,255
+    [/left]
+    [right]
+      texture=clearlooks
+      imageRect=181, 52, 4, 14
+      color=255,255,255,255
+    [/right]
+    [normal]
+      texture=clearlooks
+      imageRect=13, 52, 82, 14
+      color=255,255,255,255
+    [/normal]
+    [hovered]
+      texture=clearlooks
+      imageRect=196, 55, 68, 10
+      color=255,255,255,255
+    [/hovered]
+    [selected]
+      texture=clearlooks
+      imageRect=12, 126, 173, 11
+      color=255,255,255,255
+    [/selected]
+    [disabled]
+      texture=clearlooks
+      imageRect=101, 53, 82, 13
+      color=255,255,255,255
+    [/disabled]
+    [bottom]
+      texture=clearlooks
+      imageRect=103, 67, 77, 4
+      color=255,255,255,255
+    [/bottom]
+    [bottomleft]
+      texture=clearlooks
+      imageRect=99, 67, 4, 4
+      color=255,255,255,255
+    [/bottomleft]
+    [bottomright]
+      texture=clearlooks
+      imageRect=181, 67, 4, 4
+      color=255,255,255,255
+    [/bottomright]
+    [collapse]
+      texture=clearlooks
+      imageRect=373, 52, 12, 12
+      color=255,255,255,255
+    [/collapse]
+    [expand]
+      texture=clearlooks
+      imageRect=389, 52, 12, 12
+      color=255,255,255,255
+    [/expand]
+    font=vera12
+    [fontcolor]
+      color=0,0,0,255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+    [/fontcolor]
+    labeloffset=16
+    indent=16
+  [/widget]
+  [widget]
+    type=EGWT_SPLITTER
+    name=splitter
+    [horizontal]
+      texture=clearlooks
+      imageRect=269, 89, 6, 16
+      color=255,255,255,255
+    [/horizontal]
+    [vertical]
+      texture=clearlooks
+      imageRect=269, 82, 16, 6
+      color=255,255,255,255
+    [/vertical]
+  [/widget]
+  [widget]
+    type=EGWT_TAB_CONTROL
+    name=tabcontrol
+    [button]
+      [normal]
+        [left]
+          texture=clearlooks
+          imageRect=50, 81, 3, 26
+          color=255,255,255,255
+        [/left]
+        [middle]
+          texture=clearlooks
+          imageRect=53, 81, 31, 26
+          color=255,255,255,255
+        [/middle]
+        [right]
+          texture=clearlooks
+          imageRect=84, 81, 3, 26
+          color=255,255,255,255
+        [/right]
+      [/normal]
+      [hovered]
+        [left]
+          texture=clearlooks
+          imageRect=10, 79, 3, 28
+          color=255,255,255,255
+        [/left]
+        [middle]
+          texture=clearlooks
+          imageRect=13, 79, 33, 28
+          color=255,255,255,255
+        [/middle]
+        [right]
+          texture=clearlooks
+          imageRect=46, 79, 3, 28
+          color=255,255,255,255
+        [/right]
+      [/hovered]
+      [selected]
+        [left]
+          texture=clearlooks
+          imageRect=10, 79, 3, 28
+          color=255,255,255,255
+        [/left]
+        [middle]
+          texture=clearlooks
+          imageRect=13, 79, 33, 28
+          color=255,255,255,255
+        [/middle]
+        [right]
+          texture=clearlooks
+          imageRect=46, 79, 3, 28
+          color=255,255,255,255
+        [/right]
+      [/selected]
+      [disabled]
+        [left]
+          texture=clearlooks
+          imageRect=196, 167, 3, 20
+          color=255,255,255,255
+        [/left]
+        [middle]
+          texture=clearlooks
+          imageRect=199, 167, 59, 20
+          color=255,255,255,255
+        [/middle]
+        [right]
+          texture=clearlooks
+          imageRect=258, 167, 4, 20
+          color=255,255,255,255
+        [/right]
+      [/disabled]
+      [focus]
+        [left]
+          texture=clearlooks
+          imageRect=262, 167, 3, 20
+          color=255,255,255,255
+        [/left]
+        [middle]
+          texture=clearlooks
+          imageRect=265, 167, 59, 20
+          color=255,255,255,255
+        [/middle]
+        [right]
+          texture=clearlooks
+          imageRect=324, 167, 4, 20
+          color=255,255,255,255
+        [/right]
+      [/focus]
+      font=vera12
+      [fontcolor]
+        color=0,0,0,255
+        hoveredcolor=128,128,128,255
+        pressedcolor=0,0,255,255
+        disabledcolor=192,192,192,255
+        focuscolor=0,0,0,255
+      [/fontcolor]
+    [/button]
+    [pane]
+      [left]
+        texture=clearlooks
+        imageRect=194, 49, 2, 59
+        color=255,255,255,255
+      [/left]
+      [right]
+        texture=clearlooks
+        imageRect=263, 49, 3, 59
+        color=255,255,255,255
+      [/right]
+      [top]
+        texture=clearlooks
+        imageRect=196, 47, 67, 2
+        color=255,255,255,255
+      [/top]
+      [bottom]
+        texture=clearlooks
+        imageRect=196, 108, 67, 3
+        color=255,255,255,255
+      [/bottom]
+      [center]
+        texture=clearlooks
+        imageRect=196, 49, 67, 59
+        color=255,255,255,255
+      [/center]
+      [filler]
+        texture=clearlooks
+        imageRect=14, 143, 167, 127
+        color=255,255,255,255
+      [/filler]
+    [/pane]
+  [/widget]
+  [widget]
+    type=EGWT_COMBOBOX
+    name=combobox
+    [button]
+      [normal]
+        texture=clearlooks
+        imageRect=378, 8, 26, 25
+        color=255,255,255,255
+      [/normal]
+      [hovered]
+        texture=clearlooks
+        imageRect=378, 8, 26, 25
+        color=255,255,255,255
+      [/hovered]
+      [pressed]
+        texture=clearlooks
+        imageRect=443, 8, 25, 25
+        color=255,255,255,255
+      [/pressed]
+      [disabled]
+        texture=clearlooks
+        imageRect=411, 8, 25, 25
+        color=255,255,255,255
+      [/disabled]
+    [/button]
+    [background]
+      [normal]
+        [left]
+          texture=clearlooks
+          imageRect=11, 48, 6, 23
+          color=255,255,255,255
+        [/left]
+        [middle]
+          texture=clearlooks
+          imageRect=20, 48, 62, 23
+          color=255,255,255,255
+        [/middle]
+        [right]
+          texture=clearlooks
+          imageRect=88, 48, 9, 23
+          color=255,255,255,255
+        [/right]
+      [/normal]
+      [hovered]
+        [left]
+          texture=clearlooks
+          imageRect=99, 48, 9, 23
+          color=255,255,255,255
+        [/left]
+        [middle]
+          texture=clearlooks
+          imageRect=109, 48, 65, 23
+          color=255,255,255,255
+        [/middle]
+        [right]
+          texture=clearlooks
+          imageRect=177, 48, 8, 23
+          color=255,255,255,255
+        [/right]
+      [/hovered]
+      [pressed]
+        [left]
+          texture=clearlooks
+          imageRect=11, 48, 8, 23
+          color=255,255,255,255
+        [/left]
+        [middle]
+          texture=clearlooks
+          imageRect=19, 48, 69, 23
+          color=255,255,255,255
+        [/middle]
+        [right]
+          texture=clearlooks
+          imageRect=87, 48, 10, 23
+          color=255,255,255,255
+        [/right]
+      [/pressed]
+      [disabled]
+        [left]
+          texture=clearlooks
+          imageRect=99, 48, 9, 23
+          color=255,255,255,255
+        [/left]
+        [middle]
+          texture=clearlooks
+          imageRect=108, 48, 68, 23
+          color=255,255,255,255
+        [/middle]
+        [right]
+          texture=clearlooks
+          imageRect=178, 48, 7, 23
+          color=255,255,255,255
+        [/right]
+      [/disabled]
+    [/background]
+    font=vera12
+    [fontcolor]
+      color=0,0,0,255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+      focuscolor=0,0,0,255
+    [/fontcolor]
+    labeloffsetx=3
+    labeloffsety=0
+  [/widget]
+  [widget]
+    type=EGWT_SCROLL_CONTROL
+    name=scrollcontrol
+    [pane]
+      colorTopLeft=77,77,77,255
+      colorTopRight=77,77,77,255
+      colorBottomLeft=77,77,77,255
+      colorBottomRight=77,77,77,255
+    [/pane]
+  [/widget]
+  [widget]
+    type=EGWT_TEXT_AREA
+    name=textarea
+    font=vera12
+    [fontcolor]
+      color=0,0,0,255
+      hoveredcolor=0,0,0,255
+      pressedcolor=0,0,0,255
+      disabledcolor=192,192,192,255
+      focuscolor=0,0,0,255
+    [/fontcolor]
+    [left]
+      texture=clearlooks
+      imageRect=194, 47, 2, 64
+      color=255,255,255,255
+    [/left]
+    [right]
+      texture=clearlooks
+      imageRect=263, 47, 3, 64
+      color=255,255,255,255
+    [/right]
+    [middle]
+      texture=clearlooks
+      imageRect=196, 49, 67, 59
+      color=255,255,255,255
+    [/middle]
+    [field]
+      color=255,255,255,255
+    [/field]
+    [fieldDisabled]
+      color=100,100,100,255
+    [/fieldDisabled]
+    [textCursor]
+      texture=clearlooks
+      imageRect=268, 137, 4, 7
+      color=255,255,255,255
+    [/textCursor]
+    [highlight]
+      color=100,100,200,255
+    [/highlight]
+    [textHighlightColor]
+      color=255,255,255,255
+    [/textHighlightColor]
+    [borders]
+      top=3
+      left=1
+      bottom=3
+      right=1
+    [/borders]
+    cursorwidth=1
+  [/widget]
+[/theme]
