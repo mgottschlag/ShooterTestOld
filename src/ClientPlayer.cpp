@@ -23,7 +23,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ClientPlayer::ClientPlayer(peak::Client *client, bool local)
 	: ClientEntity(client, local), health(this), position(this), rotation(this),
 	keys(this), pointerpos(this), clientkeys(this), clientrotation(this),
-	currentkeys(0), gotinput(false)
+	currentkeys(0), gotinput(false), lastshot(0)
 {
 	health.init(100, 8);
 	addProperty(&health);
@@ -71,6 +71,18 @@ ClientPlayer::ClientPlayer(peak::Client *client, bool local)
 	// Player model
 	model = new peak::ModelSceneNode("soldier", graphics);
 	model->setParent(graphics->getRootSceneNode());
+	gun = new peak::ModelSceneNode("gun", graphics);
+	if (isLocal())
+		gun->setParent(camera);
+	else
+		gun->setParent(model);
+	gun->setTransformation(peak::Vector3F(0.4, -0.3, 0.9), peak::Vector3F(0, -90, 0),
+		0);
+	muzzleflash = new peak::ModelSceneNode("muzzleflash", graphics);
+	muzzleflash->setVisible(false);
+	muzzleflash->setParent(gun);
+	bullettrail = new peak::ModelSceneNode("bullettrail", graphics);
+	bullettrail->setParent(graphics->getRootSceneNode());
 
 	if (local)
 		graphics->addInputReceiver(this);
@@ -86,16 +98,10 @@ std::string ClientPlayer::getType()
 
 void ClientPlayer::update()
 {
+	unsigned int time = getManager()->getTime();
 	peak::ScopedLock lock(mutex);
 	if (gotinput)
 	{
-		/*// Send input to the server
-		peak::Buffer *msg = new peak::Buffer();
-		msg->writeUnsignedInt(currentkeys, 8);
-		msg->writeFloat(camerarotation.x);
-		msg->writeFloat(camerarotation.y);
-		//sendMessage(msg, false);
-		sendMessage(msg, true);*/
 		std::cout << "Setting keys to " << (int)currentkeys << std::endl;
 		clientkeys.set(currentkeys);
 		clientrotation.set(peak::Vector2F(camerarotation.x, camerarotation.y));
@@ -106,7 +112,7 @@ void ClientPlayer::update()
 		currentinput.rotation = camerarotation;
 		peak::InputHistoryFrame<PlayerInput> *inputframe;
 		inputframe = new peak::InputHistoryFrame<PlayerInput>;
-		inputframe->time = getManager()->getTime();
+		inputframe->time = time;
 		inputframe->data = currentinput;
 		inputhistory.insert(inputframe);
 	}
@@ -144,6 +150,36 @@ void ClientPlayer::update()
 			pointer2->setTransformation(collinfo.point, peak::Quaternion(), peak::OS::get().getTime() + 40000);
 		}
 	}
+	// Shooting
+	bool shooting;
+	if (isLocal())
+		shooting = currentkeys & 0x2;
+	else
+		shooting = keys.get() & 0x2;
+	if (shooting && (time - lastshot > 7))
+	{
+		muzzleflash->setVisible(true);
+		lastshot = time;
+		// Create shot
+		bulletrotation = peak::Vector3F(rotation.get().x, rotation.get().y, 0);
+		bulletposition = peak::Vector3F(-0.4, -0.3, 2);
+		bulletposition.rotate(bulletrotation);
+		bulletposition += position.get() + peak::Vector3F(0, 0.4, 0);
+		bullettrail->setTransformation(bulletposition, bulletrotation,
+			peak::OS::get().getTime() + 40000);
+	}
+	else if (muzzleflash->isVisible())
+	{
+		muzzleflash->setVisible(false);
+	}
+	// Move bullet trail
+	peak::Vector3F relmovement(0, 0, 2);
+	relmovement.rotate(bulletrotation);
+	bulletposition += relmovement;
+	bullettrail->setTransformation(bulletposition, bulletrotation,
+		peak::OS::get().getTime() + 40000);
+	
+	
 }
 
 void ClientPlayer::onUpdate(unsigned int acktime)
@@ -208,6 +244,10 @@ void ClientPlayer::onKeyDown(peak::KeyCode key)
 	{
 		currentkeys |= 0x04;
 	}
+	else if (key == peak::KEY_LBUTTON)
+	{
+		currentkeys |= 0x02;
+	}
 	gotinput = true;
 }
 void ClientPlayer::onKeyUp(peak::KeyCode key)
@@ -236,6 +276,10 @@ void ClientPlayer::onKeyUp(peak::KeyCode key)
 	else if (key == peak::KEY_LSHIFT)
 	{
 		currentkeys &= ~0x04;
+	}
+	else if (key == peak::KEY_LBUTTON)
+	{
+		currentkeys &= ~0x02;
 	}
 	gotinput = true;
 }

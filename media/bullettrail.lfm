@@ -1,0 +1,43 @@
+# PyLFM Version (0, 3, 12)
+# Lightfeather LFMG Version 3
+# AUTHOR: 
+# COPYRIGHT: 
+# DESIGNER: Blender v249
+# MODIFIED: November 26, 2009
+[geometry]
+filename=bullettrail.lfmg
+name=bullettrail
+[/geometry]
+[mesh]
+name=bullettrail
+type=EPT_TRIANGLE_LIST
+vertexbuffer=bullettrail/bullettrail_vb0
+indexbuffer=bullettrail/bullettrail_ib0
+firstindex=0
+numindexes=12
+[/mesh]
+[material]
+name=bullettrailmat
+feature=ERPF_TRANSLUCENT_ADD
+[colormaterial]
+ambient=127,127,127,255
+diffuse=204,204,204,255
+emissive=0,0,0,255
+specular=255,255,255,255
+shininess=0
+[/colormaterial]
+[texture]
+type=2D
+filename=bullettrail.png
+name=bullettrail.png
+[/texture]
+[renderstate]
+type=ERST_CULLING
+enabled=false
+[/renderstate]
+[/material]
+[model]
+name=bullettrail
+mesh=bullettrail
+material=bullettrailmat
+[/model]

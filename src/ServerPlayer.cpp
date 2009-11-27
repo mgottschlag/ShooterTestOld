@@ -21,7 +21,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ServerPlayer::ServerPlayer(peak::Server *server) : ServerEntity(server),
 	health(this), position(this), rotation(this), keys(this), pointerpos(this),
-	clientkeys(this), clientrotation(this)
+	clientkeys(this), clientrotation(this), lastshot(0)
 {
 	health.init(100, 8);
 	addProperty(&health);
@@ -42,6 +42,7 @@ ServerPlayer::ServerPlayer(peak::Server *server) : ServerEntity(server),
 	addClientProperty(&clientrotation);
 
 	character.init(&((Server*)getManager())->getPhysics());
+	character.getBody()->setUserData(this);
 }
 ServerPlayer::~ServerPlayer()
 {
@@ -95,10 +96,44 @@ void ServerPlayer::update()
 	peak::Vector3F rayend = raystart + raylength;
 	peak::Physics &physics = ((Server*)getManager())->getPhysics();
 	peak::CollisionInfo collinfo;
-	if (physics.castRay(raystart, rayend, &collinfo))
+	bool havetarget = physics.castRay(raystart, rayend, &collinfo);
+	if (havetarget)
 	{
 		pointerpos.set(collinfo.point);
 	}
+	// Shooting
+	bool shooting;
+	unsigned int time = getManager()->getTime();
+	shooting = keys.get() & 0x2;
+	if (shooting && (time - lastshot > 7))
+	{
+		lastshot = time;
+		// Create shot
+		bulletrotation = peak::Vector3F(rotation.get().x, rotation.get().y, 0);
+		bulletposition = peak::Vector3F(-0.4, -0.3, 2);
+		bulletposition.rotate(bulletrotation);
+		bulletposition += position.get() + peak::Vector3F(0, 0.4, 0);
+		// Damage other player
+		if (havetarget && collinfo.body->getUserData())
+		{
+			ServerEntity *entity = (ServerEntity*)collinfo.body->getUserData();
+			if (entity->getType() == "player")
+			{
+				ServerPlayer *player = (ServerPlayer*)entity;
+				player->damage(30);
+			}
+		}
+	}
+}
+
+void ServerPlayer::damage(unsigned int dmg)
+{
+	int currenthp = health.get();
+	currenthp -= dmg;
+	if (currenthp < 0)
+		currenthp = 0;
+	health.set(currenthp);
+	std::cout << "Health: " << currenthp << std::endl;
 }
 
 void ServerPlayer::setPosition(peak::Vector3F position)

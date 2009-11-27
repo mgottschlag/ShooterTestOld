@@ -40,6 +40,8 @@ bool Game::init()
 	graphics.loadFile("media/container.lfm");
 	graphics.loadFile("media/pointer.lfm");
 	graphics.loadFile("media/soldier.lfm");
+	graphics.loadFile("media/gun.lfm");
+	graphics.loadFile("media/bullettrail.lfm");
 	graphics.loadFile("media/clearlooks.lfgt");
 	/*peak::ModelSceneNode *model = new peak::ModelSceneNode("container",
 		&graphics);

@@ -32,6 +32,8 @@ class ServerPlayer : public peak::ServerEntity
 
 		virtual void update();
 
+		void damage(unsigned int dmg);
+
 		void setPosition(peak::Vector3F position);
 	private:
 		peak::IntProperty health;
@@ -42,6 +44,10 @@ class ServerPlayer : public peak::ServerEntity
 
 		peak::IntProperty clientkeys;
 		peak::Vector2FProperty clientrotation;
+
+		peak::Vector3F bulletrotation;
+		peak::Vector3F bulletposition;
+		unsigned int lastshot;
 
 		/*peak::Capsule shape;
 		peak::Body body;*/

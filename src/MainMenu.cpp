@@ -22,6 +22,9 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 MainMenu::MainMenu(peak::Graphics *graphics, Game *game)
 	: peak::Menu(graphics, "clearlooks"), game(game)
 {
+	setClear(true);
+	setClearColor(0xFF0081b7);
+	// Create widgets
 	singleplayer = new peak::MenuButton(graphics, "Singleplayer", this);
 	singleplayer->queueForLoading();
 	singleplayer->setPosition(peak::ScreenPosition(peak::Vector2F(1.0, 0.5),
@@ -52,6 +55,12 @@ MainMenu::MainMenu(peak::Graphics *graphics, Game *game)
 		peak::Vector2I(-220, 60)));
 	exit->setSize(peak::ScreenPosition(peak::Vector2F(0.0, 0.0),
 		peak::Vector2I(200, 30)));
+	logo = new peak::MenuImage(graphics, "media/logo.png", this);
+	logo->queueForLoading();
+	logo->setPosition(peak::ScreenPosition(peak::Vector2F(0.0, 0.0),
+		peak::Vector2I(30, 30)));
+	logo->setSize(peak::ScreenPosition(peak::Vector2F(0.0, 0.0),
+		peak::Vector2I(512, 256)));
 }
 MainMenu::~MainMenu()
 {

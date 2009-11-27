@@ -38,6 +38,8 @@ class MainMenu : public peak::Menu
 		peak::MenuButton *joinserver;
 		peak::MenuButton *settings;
 		peak::MenuButton *exit;
+
+		peak::MenuImage *logo;
 };
 
 #endif

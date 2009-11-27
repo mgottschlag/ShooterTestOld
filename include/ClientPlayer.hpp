@@ -62,11 +62,18 @@ class ClientPlayer : public peak::ClientEntity, public peak::InputReceiver
 		peak::Vector2I mousemovement;
 		bool gotinput;
 
+		unsigned int lastshot;
+
 		peak::Vector2F camerarotation;
 		peak::ModelSceneNode *model;
+		peak::ModelSceneNode *gun;
+		peak::ModelSceneNode *muzzleflash;
+		peak::ModelSceneNode *bullettrail;
 		peak::CameraSceneNode *camera;
 		peak::ModelSceneNode *pointer;
 		peak::ModelSceneNode *pointer2;
+		peak::Vector3F bulletrotation;
+		peak::Vector3F bulletposition;
 
 		peak::CharacterController character;
 

@@ -1,0 +1,76 @@
+# PyLFM Version (0, 3, 12)
+# Lightfeather LFMG Version 3
+# AUTHOR: 
+# COPYRIGHT: 
+# DESIGNER: Blender v249
+# MODIFIED: November 26, 2009
+[geometry]
+filename=gun.lfmg
+name=gun
+[/geometry]
+[mesh]
+name=muzzleflash
+type=EPT_TRIANGLE_LIST
+vertexbuffer=gun/muzzleflash_vb0
+indexbuffer=gun/muzzleflash_ib0
+firstindex=0
+numindexes=24
+[/mesh]
+[mesh]
+name=gun
+type=EPT_TRIANGLE_LIST
+vertexbuffer=gun/gun_vb0
+indexbuffer=gun/gun_ib0
+firstindex=0
+numindexes=1188
+[/mesh]
+[material]
+name=gunmat
+feature=ERPF_DIFFUSEMAP
+[colormaterial]
+ambient=127,127,127,255
+diffuse=204,204,204,255
+emissive=0,0,0,255
+specular=255,255,255,255
+shininess=0
+[/colormaterial]
+[texture]
+type=2D
+filename=gun.png
+name=gun.png.001
+[/texture]
+[renderstate]
+type=ERST_CULLING
+enabled=false
+[/renderstate]
+[/material]
+[material]
+name=muzzleflashmat
+feature=ERPF_TRANSLUCENT_ADD
+[colormaterial]
+ambient=127,127,127,255
+diffuse=204,204,204,255
+emissive=0,0,0,255
+specular=255,255,255,255
+shininess=0
+[/colormaterial]
+[texture]
+type=2D
+filename=muzzleflash.png
+name=muzzleflash.png
+[/texture]
+[renderstate]
+type=ERST_CULLING
+enabled=false
+[/renderstate]
+[/material]
+[model]
+name=muzzleflash
+mesh=muzzleflash
+material=muzzleflashmat
+[/model]
+[model]
+name=gun
+mesh=gun
+material=gunmat
+[/model]
