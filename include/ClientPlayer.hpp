@@ -21,11 +21,15 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include <PeakGraphics.hpp>
 #include <PeakPhysics.hpp>
 
+#include "HUD.hpp"
+
 struct PlayerInput
 {
 	unsigned char keys;
 	peak::Vector2F rotation;
 };
+
+class HUD;
 
 class ClientPlayer : public peak::ClientEntity, public peak::InputReceiver
 {
@@ -76,6 +80,8 @@ class ClientPlayer : public peak::ClientEntity, public peak::InputReceiver
 		peak::Vector3F bulletposition;
 
 		peak::CharacterController character;
+
+		HUDPointer hud;
 
 		peak::Mutex mutex;
 };

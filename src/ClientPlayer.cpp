@@ -23,7 +23,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ClientPlayer::ClientPlayer(peak::Client *client, bool local)
 	: ClientEntity(client, local), health(this), position(this), rotation(this),
 	keys(this), pointerpos(this), clientkeys(this), clientrotation(this),
-	currentkeys(0), gotinput(false), lastshot(0)
+	currentkeys(0), gotinput(false), lastshot(0), hud(0)
 {
 	health.init(100, 8);
 	addProperty(&health);
@@ -57,6 +57,8 @@ ClientPlayer::ClientPlayer(peak::Client *client, bool local)
 		camera->setParent(graphics->getRootSceneNode());
 		camera->setTransformation(peak::Vector3F(0, 2, -10), peak::Vector3F(0, 0, 0),
 			0);
+
+		hud = new HUD(graphics);
 	}
 
 	// Pointer (debugging)
@@ -215,6 +217,9 @@ void ClientPlayer::onUpdate(unsigned int acktime)
 		input = input->next;
 	}
 	//std::cout << "Replayed " << replayedtime << " input frames." << std::endl;
+
+	if (hud)
+		hud->setHealth(health.get());
 }
 
 void ClientPlayer::onKeyDown(peak::KeyCode key)
