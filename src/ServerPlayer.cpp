@@ -61,6 +61,12 @@ void ServerPlayer::onUpdate()
 	rotation.set(clientrotation.get());
 }
 
+void ServerPlayer::receiveMessage(peak::Buffer *buffer)
+{
+	static peak::PhysicsProfiler profiler;
+	profiler.dump();
+}
+
 void ServerPlayer::update()
 {
 	unsigned int currentkeys = keys.get();
@@ -133,7 +139,6 @@ void ServerPlayer::damage(unsigned int dmg)
 	if (currenthp < 0)
 		currenthp = 0;
 	health.set(currenthp);
-	std::cout << "Health: " << currenthp << std::endl;
 }
 
 void ServerPlayer::setPosition(peak::Vector3F position)

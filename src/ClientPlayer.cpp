@@ -253,6 +253,13 @@ void ClientPlayer::onKeyDown(peak::KeyCode key)
 	{
 		currentkeys |= 0x02;
 	}
+	else if (key == peak::KEY_KEY_P)
+	{
+		// Send profiler command
+		peak::Buffer *buffer = new peak::Buffer();
+		buffer->write8(42);
+		sendMessage(buffer, true);
+	}
 	gotinput = true;
 }
 void ClientPlayer::onKeyUp(peak::KeyCode key)

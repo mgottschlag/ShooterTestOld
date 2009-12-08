@@ -30,6 +30,8 @@ class ServerPlayer : public peak::ServerEntity
 
 		virtual void onUpdate();
 
+		virtual void receiveMessage(peak::Buffer *buffer);
+
 		virtual void update();
 
 		void damage(unsigned int dmg);
