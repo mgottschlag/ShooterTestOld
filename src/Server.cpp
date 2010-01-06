@@ -43,7 +43,7 @@ bool Server::load(peak::BufferPointer serverdata)
 	for (unsigned int i = 0; i < 10; i++)
 	{
 		peak::ServerEntity *container = containerfactory->createServerEntity(this);
-		((ServerContainer*)container)->setPosition(peak::Vector3F(0, 10 + i * 4, 0));
+		((ServerContainer*)container)->setPosition(peak::Vector3F(0.0f, 10.0f + (float)i * 4.0f, 0.0f));
 		addEntity(container);
 	}
 	return true;

@@ -8,3 +8,5 @@
 /libShooterShared.so
 /bin
 /obj
+/msvc/ShooterTest.ncb
+/msvc/ShooterTest.suo

@@ -28,7 +28,7 @@ ClientContainer::ClientContainer(peak::Client *client, bool local)
 	rotation.init(startrot);
 	addProperty(&rotation);
 
-	shape.init(peak::Vector3F(2.4, 2.5, 6), 0.0f);
+	shape.init(peak::Vector3F(2.4f, 2.5f, 6.0f), 0.0f);
 	body.init(&((Client*)getManager())->getPhysics(), &shape);
 
 	Game *game = (Game*)getManager()->getEngine()->getGame();

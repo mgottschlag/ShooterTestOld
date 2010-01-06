@@ -27,7 +27,7 @@ ServerContainer::ServerContainer(peak::Server *server) : ServerEntity(server),
 	rotation.init(startrot);
 	addProperty(&rotation);
 
-	shape.init(peak::Vector3F(2.4, 2.5, 6), 100.0f);
+	shape.init(peak::Vector3F(2.4f, 2.5f, 6.0f), 100.0f);
 	body.init(&((Server*)getManager())->getPhysics(), &shape);
 }
 ServerContainer::~ServerContainer()

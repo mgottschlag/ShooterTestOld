@@ -78,7 +78,7 @@ ClientPlayer::ClientPlayer(peak::Client *client, bool local)
 		gun->setParent(camera);
 	else
 		gun->setParent(model);
-	gun->setTransformation(peak::Vector3F(0.4, -0.3, 0.9), peak::Vector3F(0, -90, 0),
+	gun->setTransformation(peak::Vector3F(0.4f, -0.3f, 0.9f), peak::Vector3F(0.0f, -90.0f, 0.0f),
 		0);
 	muzzleflash = new peak::ModelSceneNode("muzzleflash", graphics);
 	muzzleflash->setVisible(false);
@@ -124,8 +124,8 @@ void ClientPlayer::update()
 	// Update model
 	if (isLocal())
 	{
-		camera->setTransformation(position.get() + peak::Vector3F(0, 0.4, 0),
-			peak::Vector3F(rotation.get().x, rotation.get().y, 0),
+		camera->setTransformation(position.get() + peak::Vector3F(0.0f, 0.4f, 0.0f),
+			peak::Vector3F(rotation.get().x, rotation.get().y, 0.0f),
 			peak::OS::get().getTime() + 40000);
 	}
 	else
@@ -164,9 +164,9 @@ void ClientPlayer::update()
 		lastshot = time;
 		// Create shot
 		bulletrotation = peak::Vector3F(rotation.get().x, rotation.get().y, 0);
-		bulletposition = peak::Vector3F(-0.4, -0.3, 2);
+		bulletposition = peak::Vector3F(-0.4f, -0.3f, 2.0f);
 		bulletposition.rotate(bulletrotation);
-		bulletposition += position.get() + peak::Vector3F(0, 0.4, 0);
+		bulletposition += position.get() + peak::Vector3F(0.0f, 0.4f, 0.0f);
 		bullettrail->setTransformation(bulletposition, bulletrotation,
 			peak::OS::get().getTime() + 40000);
 	}
