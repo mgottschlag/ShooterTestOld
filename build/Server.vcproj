@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="Client"
-	ProjectGUID="{E94DE991-5A87-44F1-8536-4E1554D2B46E}"
-	RootNamespace="Client"
+	Name="Server"
+	ProjectGUID="{4E130E7F-B9DB-4C8C-A196-4E0D4CF867A5}"
+	RootNamespace="Server"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
@@ -17,8 +17,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\bin"
-			IntermediateDirectory="..\obj"
+			OutputDirectory="$(SolutionDir)..\bin"
+			IntermediateDirectory="$(SolutionDir)..\obj"
 			ConfigurationType="1"
 			CharacterSet="2"
 			BuildLogFile="$(IntDir)\$(ProjectName).htm"
@@ -42,13 +42,14 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\include"
-				PreprocessorDefinitions="_DEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WIN32"
+				PreprocessorDefinitions="_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WIN32"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				ProgramDataBaseFileName="..\bin\vc90.pdb"
+				ProgramDataBaseFileName="$(IntDir)\$(ProjectName).pdb"
 				WarningLevel="3"
 				DebugInformationFormat="4"
+				DisableSpecificWarnings="4355;4800"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -62,9 +63,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="libbulletsoftbody_d.lib libbulletmath_d.lib libbulletdynamics_d.lib libbulletcollision_d.lib ws2_32.lib winmm.lib enet.lib FreeImagePlus.lib lightfeather.lib pthreadVC1.lib PeakEngine.lib PeakGraphics.lib PeakPhysics.lib"
-				OutputFile="..\bin\$(ProjectName).exe"
 				GenerateDebugInformation="true"
-				RandomizedBaseAddress="1"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -72,9 +71,6 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				OutputManifestFile="$(OutDir)\$(TargetFileName).embed.manifest"
-				ManifestResourceFile="$(OutDir)\$(TargetFileName).embed.manifest.res"
-				DependencyInformationFile="$(OutDir)\mt.dep"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -94,11 +90,12 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\bin"
+			IntermediateDirectory="$(SolutionDir)..\obj"
 			ConfigurationType="1"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
+			BuildLogFile="$(IntDir)\$(ProjectName).htm"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -119,10 +116,14 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				RuntimeLibrary="2"
+				AdditionalIncludeDirectories="..\include"
+				PreprocessorDefinitions="_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WIN32"
+				RuntimeLibrary="0"
 				EnableFunctionLevelLinking="true"
+				ProgramDataBaseFileName="$(IntDir)\$(ProjectName).pdb"
 				WarningLevel="3"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4355;4800"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -135,6 +136,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="libbulletsoftbody_d.lib libbulletmath_d.lib libbulletdynamics_d.lib libbulletcollision_d.lib ws2_32.lib winmm.lib enet.lib FreeImagePlus.lib lightfeather.lib pthreadVC1.lib PeakEngine.lib PeakGraphics.lib PeakPhysics.lib"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -167,63 +169,7 @@
 	</References>
 	<Files>
 		<Filter
-			Name="src"
-			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
-			>
-			<File
-				RelativePath="..\src\Client.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\ClientContainer.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\ClientPlayer.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\ContainerFactory.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\Game.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\HUD.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\main.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\MainMenu.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\PlayerFactory.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\Server.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\ServerContainer.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\ServerPlayer.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
 			Name="include"
-			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
 				RelativePath="..\include\Client.hpp"
@@ -267,6 +213,58 @@
 			</File>
 			<File
 				RelativePath="..\include\ServerPlayer.hpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="src"
+			>
+			<File
+				RelativePath="..\src\Client.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\ClientContainer.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\ClientPlayer.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\ContainerFactory.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\Game.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\HUD.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\MainMenu.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\PlayerFactory.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\Server.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\ServerContainer.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\servermain.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\src\ServerPlayer.cpp"
 				>
 			</File>
 		</Filter>

@@ -115,10 +115,10 @@ void ServerPlayer::update()
 	{
 		lastshot = time;
 		// Create shot
-		bulletrotation = peak::Vector3F(rotation.get().x, rotation.get().y, 0);
-		bulletposition = peak::Vector3F(-0.4, -0.3, 2);
+		bulletrotation = peak::Vector3F(rotation.get().x, rotation.get().y, 0.0f);
+		bulletposition = peak::Vector3F(-0.4f, -0.3f, 2.0f);
 		bulletposition.rotate(bulletrotation);
-		bulletposition += position.get() + peak::Vector3F(0, 0.4, 0);
+		bulletposition += position.get() + peak::Vector3F(0.0f, 0.4f, 0.0f);
 		// Damage other player
 		if (havetarget && collinfo.body->getUserData())
 		{

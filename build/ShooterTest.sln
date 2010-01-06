@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shooter", "Shooter.vcproj", "{2AEAF8EE-DEBD-4553-ACB1-E4EAE6A74020}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "Server.vcproj", "{4E130E7F-B9DB-4C8C-A196-4E0D4CF867A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AEAF8EE-DEBD-4553-ACB1-E4EAE6A74020}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2AEAF8EE-DEBD-4553-ACB1-E4EAE6A74020}.Debug|Win32.Build.0 = Debug|Win32
+		{2AEAF8EE-DEBD-4553-ACB1-E4EAE6A74020}.Release|Win32.ActiveCfg = Release|Win32
+		{2AEAF8EE-DEBD-4553-ACB1-E4EAE6A74020}.Release|Win32.Build.0 = Release|Win32
+		{4E130E7F-B9DB-4C8C-A196-4E0D4CF867A5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4E130E7F-B9DB-4C8C-A196-4E0D4CF867A5}.Debug|Win32.Build.0 = Debug|Win32
+		{4E130E7F-B9DB-4C8C-A196-4E0D4CF867A5}.Release|Win32.ActiveCfg = Release|Win32
+		{4E130E7F-B9DB-4C8C-A196-4E0D4CF867A5}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
