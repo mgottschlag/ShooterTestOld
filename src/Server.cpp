@@ -15,8 +15,9 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
 #include "Server.hpp"
-#include "ServerContainer.hpp"
-#include "ServerPlayer.hpp"
+#include "container/ServerContainer.hpp"
+#include "player/ServerPlayer.hpp"
+#include "star/ServerStar.hpp"
 
 Server::Server(peak::Engine *engine) : peak::Server(engine)
 {
@@ -46,6 +47,10 @@ bool Server::load(peak::BufferPointer serverdata)
 		((ServerContainer*)container)->setPosition(peak::Vector3F(0.0f, 10.0f + (float)i * 4.0f, 0.0f));
 		addEntity(container);
 	}
+	// Load a sample entity with a trimesh shape
+	peak::ServerEntity *star = game->getEntityFactory("star")->createServerEntity(this);
+	((ServerStar*)star)->setPosition(peak::Vector3F(5.0f, 5.0f, 20.0f));
+	addEntity(star);
 	return true;
 }
 

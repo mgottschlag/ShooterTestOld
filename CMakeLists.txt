@@ -5,17 +5,20 @@ project(Shooter)
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter")
 
 set(SRC_SHARED
+src/container/ClientContainer.cpp
+src/container/ContainerFactory.cpp
+src/container/ServerContainer.cpp
+src/player/ClientPlayer.cpp
+src/player/PlayerFactory.cpp
+src/player/ServerPlayer.cpp
+src/star/ClientStar.cpp
+src/star/StarFactory.cpp
+src/star/ServerStar.cpp
 src/Client.cpp
-src/ClientContainer.cpp
-src/ClientPlayer.cpp
-src/ContainerFactory.cpp
 src/Game.cpp
 src/HUD.cpp
 src/MainMenu.cpp
-src/PlayerFactory.cpp
 src/Server.cpp
-src/ServerContainer.cpp
-src/ServerPlayer.cpp
 )
 set(SRC_CLIENT
 src/main.cpp

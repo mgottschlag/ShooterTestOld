@@ -14,14 +14,14 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#include "PlayerFactory.hpp"
+#include "container/ContainerFactory.hpp"
 
-peak::ClientEntity *PlayerFactory::createClientEntity(peak::Client *client,
+peak::ClientEntity *ContainerFactory::createClientEntity(peak::Client *client,
 	bool local)
 {
-	return new ClientPlayer(client, local);
+	return new ClientContainer(client, local);
 }
-peak::ServerEntity *PlayerFactory::createServerEntity(peak::Server *server)
+peak::ServerEntity *ContainerFactory::createServerEntity(peak::Server *server)
 {
-	return new ServerPlayer(server);
+	return new ServerContainer(server);
 }

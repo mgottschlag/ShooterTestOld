@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2009, Mathias Gottschlag
+Copyright (c) 2009-2010, Mathias Gottschlag, Christian Reiser
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
@@ -14,10 +14,10 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#include "ServerContainer.hpp"
+#include "star/ServerStar.hpp"
 #include "Server.hpp"
 
-ServerContainer::ServerContainer(peak::Server *server) : ServerEntity(server),
+ServerStar::ServerStar(peak::Server *server) : ServerEntity(server),
 	position(this), rotation(this)
 {
 	static peak::Vector3F startpos;
@@ -27,25 +27,28 @@ ServerContainer::ServerContainer(peak::Server *server) : ServerEntity(server),
 	rotation.init(startrot);
 	addProperty(&rotation);
 
-	shape.init(peak::Vector3F(2.4f, 2.5f, 6.0f), 100.0f);
+	peak::TrimeshData data;
+	data.init("media/star.obj");
+	shape.init(data,  0.0f);
 	body.init(&((Server*)getManager())->getPhysics(), &shape);
+	data.destroy();
 }
-ServerContainer::~ServerContainer()
+ServerStar::~ServerStar()
 {
 }
 
-std::string ServerContainer::getType()
+std::string ServerStar::getType()
 {
-	return "container";
+	return "star";
 }
 
-void ServerContainer::update()
+void ServerStar::update()
 {
 	position.set(body.getPosition());
 	rotation.set(body.getRotation());
 }
 
-void ServerContainer::setPosition(peak::Vector3F position)
+void ServerStar::setPosition(peak::Vector3F position)
 {
 	body.setPosition(position);
 }

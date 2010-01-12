@@ -176,18 +176,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\include\ClientContainer.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\include\ClientPlayer.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\include\ContainerFactory.hpp"
-				>
-			</File>
-			<File
 				RelativePath="..\include\Game.hpp"
 				>
 			</File>
@@ -200,39 +188,63 @@
 				>
 			</File>
 			<File
-				RelativePath="..\include\PlayerFactory.hpp"
-				>
-			</File>
-			<File
 				RelativePath="..\include\Server.hpp"
 				>
 			</File>
-			<File
-				RelativePath="..\include\ServerContainer.hpp"
+			<Filter
+				Name="container"
 				>
-			</File>
-			<File
-				RelativePath="..\include\ServerPlayer.hpp"
+				<File
+					RelativePath="..\include\container\ClientContainer.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\container\ContainerFactory.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\container\ServerContainer.hpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="player"
 				>
-			</File>
+				<File
+					RelativePath="..\include\player\ClientPlayer.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\player\PlayerFactory.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\player\ServerPlayer.hpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="star"
+				>
+				<File
+					RelativePath="..\include\star\ClientStar.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\star\ServerStar.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\star\StarFactory.hpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="src"
 			>
 			<File
 				RelativePath="..\src\Client.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\ClientContainer.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\ClientPlayer.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\src\ContainerFactory.cpp"
 				>
 			</File>
 			<File
@@ -244,29 +256,65 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\MainMenu.cpp"
+				RelativePath="..\src\main.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\src\PlayerFactory.cpp"
+				RelativePath="..\src\MainMenu.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\src\Server.cpp"
 				>
 			</File>
-			<File
-				RelativePath="..\src\ServerContainer.cpp"
+			<Filter
+				Name="container"
 				>
-			</File>
-			<File
-				RelativePath="..\src\servermain.cpp"
+				<File
+					RelativePath="..\src\container\ClientContainer.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\container\ContainerFactory.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\container\ServerContainer.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="star"
 				>
-			</File>
-			<File
-				RelativePath="..\src\ServerPlayer.cpp"
+				<File
+					RelativePath="..\src\star\ClientStar.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\star\ServerStar.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\star\StarFactory.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="player"
 				>
-			</File>
+				<File
+					RelativePath="..\src\player\ClientPlayer.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\player\PlayerFactory.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\player\ServerPlayer.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 	</Files>
 	<Globals>

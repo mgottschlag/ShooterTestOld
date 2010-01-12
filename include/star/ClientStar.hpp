@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2009, Mathias Gottschlag
+Copyright (c) 2009-2010, Mathias Gottschlag, Christian Reiser
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
@@ -14,14 +14,31 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#include "ContainerFactory.hpp"
+#ifndef _CLIENTSTAR_HPP_
+#define _CLIENTSTAR_HPP_
 
-peak::ClientEntity *ContainerFactory::createClientEntity(peak::Client *client,
-	bool local)
+#include <PeakEngine.hpp>
+#include <PeakGraphics.hpp>
+#include <PeakPhysics.hpp>
+
+class ClientStar : public peak::ClientEntity
 {
-	return new ClientContainer(client, local);
-}
-peak::ServerEntity *ContainerFactory::createServerEntity(peak::Server *server)
-{
-	return new ServerContainer(server);
-}
+	public:
+		ClientStar(peak::Client *client, bool local);
+		virtual ~ClientStar();
+
+		virtual std::string getType();
+
+		virtual void update();
+	private:
+		peak::Vector3FProperty position;
+		peak::QuaternionProperty16 rotation;
+
+		peak::GroupSceneNode *translation;
+		peak::ModelSceneNode *model;
+
+		peak::Trimesh shape;
+		peak::Body body;
+};
+
+#endif

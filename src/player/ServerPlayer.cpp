@@ -14,7 +14,7 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-#include "ServerPlayer.hpp"
+#include "player/ServerPlayer.hpp"
 #include "Server.hpp"
 
 #include <iostream>

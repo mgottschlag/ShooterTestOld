@@ -17,8 +17,9 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "Game.hpp"
 #include "Server.hpp"
 #include "Client.hpp"
-#include "PlayerFactory.hpp"
-#include "ContainerFactory.hpp"
+#include "player/PlayerFactory.hpp"
+#include "container/ContainerFactory.hpp"
+#include "star/StarFactory.hpp"
 #include "MainMenu.hpp"
 
 Game::Game() : peak::Game()
@@ -27,6 +28,8 @@ Game::Game() : peak::Game()
 	addEntityFactory(&playerfactory, "player");
 	static ContainerFactory containerfactory;
 	addEntityFactory(&containerfactory, "container");
+	static StarFactory starfactory;
+	addEntityFactory(&starfactory, "star");
 }
 Game::~Game()
 {
@@ -41,6 +44,7 @@ bool Game::init()
 	graphics.loadFile("media/pointer.lfm");
 	graphics.loadFile("media/soldier.lfm");
 	graphics.loadFile("media/gun.lfm");
+	graphics.loadFile("media/star.lfm");
 	graphics.loadFile("media/bullettrail.lfm");
 	graphics.loadFile("media/clearlooks.lfgt");
 	/*peak::ModelSceneNode *model = new peak::ModelSceneNode("container",

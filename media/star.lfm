@@ -1,0 +1,38 @@
+# PyLFM Version (0, 3, 12)
+# Lightfeather LFMG Version 3
+# AUTHOR: 
+# COPYRIGHT: 
+# DESIGNER: Blender v249
+# MODIFIED: January 12, 2010
+[geometry]
+filename=star.lfmg
+name=star
+[/geometry]
+[mesh]
+name=star
+type=EPT_TRIANGLE_LIST
+vertexbuffer=star/star_vb0
+indexbuffer=star/star_ib0
+firstindex=0
+numindexes=72
+[/mesh]
+[material]
+name=StarColor
+feature=ERPF_COLOR_ONLY
+[colormaterial]
+ambient=0,0,0,255
+diffuse=0,0,0,255
+emissive=0,0,0,255
+specular=0,0,0,255
+shininess=8
+[/colormaterial]
+[renderstate]
+type=ERST_CULLING
+enabled=false
+[/renderstate]
+[/material]
+[model]
+name=star
+mesh=star
+material=StarColor
+[/model]
