@@ -62,7 +62,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libbulletsoftbody_d.lib libbulletmath_d.lib libbulletdynamics_d.lib libbulletcollision_d.lib ws2_32.lib winmm.lib enet.lib FreeImagePlus.lib lightfeather.lib pthreadVC1.lib PeakEngine.lib PeakGraphics.lib PeakPhysics.lib"
+				AdditionalDependencies="libbulletsoftbody.lib libbulletmath.lib libbulletdynamics.lib libbulletcollision.lib ws2_32.lib winmm.lib enet.lib FreeImagePlus.lib lightfeather.lib pthreadVC1.lib PeakEngine.lib PeakGraphics.lib PeakPhysics.lib"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -116,6 +116,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="..\include"
 				PreprocessorDefinitions="_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WIN32"
 				RuntimeLibrary="0"
@@ -136,7 +137,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libbulletsoftbody_d.lib libbulletmath_d.lib libbulletdynamics_d.lib libbulletcollision_d.lib ws2_32.lib winmm.lib enet.lib FreeImagePlus.lib lightfeather.lib pthreadVC1.lib PeakEngine.lib PeakGraphics.lib PeakPhysics.lib"
+				AdditionalDependencies="libbulletsoftbody.lib libbulletmath.lib libbulletdynamics.lib libbulletcollision.lib ws2_32.lib winmm.lib enet.lib FreeImagePlus.lib lightfeather.lib pthreadVC1.lib PeakEngine.lib PeakGraphics.lib PeakPhysics.lib"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
